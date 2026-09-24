@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RETURNS — CYBERDOLL</title>
+  <meta name="description" content="Free returns and size swaps within 30 days. Check if your piece can go back." />
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="img/favicon-32.png" sizes="32x32" type="image/png" />
+  <link rel="apple-touch-icon" href="img/apple-touch-icon.png" />
+  <meta name="theme-color" content="#0a0a0b" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Pinyon+Script&family=Playfair+Display:ital,wght@1,900&family=Silkscreen&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css?v=34" />
+  <link rel="stylesheet" href="css/shop.css?v=32" />
+  <link rel="stylesheet" href="css/help.css?v=34" />
+</head>
+<body class="page-help">
+
+  <!-- global fx -->
+  <div class="grain" aria-hidden="true"></div>
+  <canvas class="trail" id="trail" aria-hidden="true"></canvas>
+  <div class="cursor" id="cursor" aria-hidden="true">
+    <svg class="cursor__heart" viewBox="0 0 7 6" shape-rendering="crispEdges"><path d="M1 0h2v1h1V0h2v1h1v2H6v1H5v1H4v1H3V5H2V4H1V3H0V1h1z"/></svg>
+    <span class="cursor__label" id="cursorLabel"></span>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <!-- ================= HEADER ================= -->
+  <header class="header" id="header">
+    <div class="ticker" aria-label="Announcements">
+      <div class="marquee" data-speed="0.6">
+        <div class="marquee__track">
+          <span>✦ FREE SHIPPING OVER €90</span><span>✦ DROP #005 MIDNIGHT MALL — OUT NOW</span><span>✦ WORLDWIDE DELIVERY</span><span>✦ NEW DOLLS GET 10% OFF — JOIN THE CLUB</span><span>✦ LIMITED PIECES, NO RESTOCKS</span>
+        </div>
+      </div>
+    </div>
+
+    <nav class="nav" aria-label="Main">
+      <button class="nav__burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="menu">
+        <span></span><span></span>
+      </button>
+
+      <ul class="nav__links nav__links--left">
+        <li><a href="new-in.html" data-scramble>NEW IN</a></li>
+        <li><a href="shop.html" data-scramble>SHOP</a></li>
+        <li><a href="drops.html" data-scramble>DROPS</a></li>
+        <li><a href="lookbook.html" data-scramble>LOOKBOOK</a></li>
+      </ul>
+
+      <a href="index.html" class="nav__logo" aria-label="CYBERDOLL home">
+        <canvas id="navLogo" class="navlogo"></canvas>
+      </a>
+
+      <ul class="nav__links nav__links--right">
+        <li class="hide-sm"><a href="about.html" data-scramble>ABOUT</a></li>
+        <li class="hide-sm"><a href="search.html" data-scramble>SEARCH</a></li>
+        <li class="hide-sm"><a href="account.html" data-scramble>ACCOUNT</a></li>
+        <li><a href="wishlist.html" class="nav__wish" aria-label="Wishlist">
+          <svg viewBox="0 0 7 6" shape-rendering="crispEdges"><path d="M1 0h2v1h1V0h2v1h1v2H6v1H5v1H4v1H3V5H2V4H1V3H0V1h1z"/></svg>
+          <span id="wishCount">0</span>
+        </a></li>
+        <li><a href="cart.html" class="nav__bag">BAG [<span id="bagCount">0</span>]</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- mobile / overlay menu -->
+  <div class="menu" id="menu" aria-hidden="true">
+    <ul class="menu__list">
+      <li><a href="new-in.html"><small>01</small>NEW IN</a></li>
+      <li><a href="shop.html"><small>02</small>SHOP</a></li>
+      <li><a href="drops.html"><small>03</small>DROPS</a></li>
+      <li><a href="lookbook.html"><small>04</small>LOOKBOOK</a></li>
+      <li><a href="about.html"><small>05</small>ABOUT</a></li>
+      <li><a href="contact.html"><small>06</small>CONTACT</a></li>
+    </ul>
+    <div class="menu__foot">
+      <a href="account.html">ACCOUNT</a><a href="search.html">SEARCH</a><a href="wishlist.html">WISHLIST ♡</a>
+    </div>
+  </div>
+
+    <main id="main" class="hp">
+    <header class="hp-head">
+      <nav class="hp-tabs" aria-label="Help pages">
+        <a href="faq.html"><i>?</i>FAQ</a>
+        <a href="size-guide.html"><i>↔</i>SIZE GUIDE</a>
+        <a href="shipping.html"><i>✈</i>SHIPPING</a>
+        <a href="returns.html" aria-current="page"><i>↺</i>RETURNS</a>
+        <a href="contact.html"><i>✉</i>CONTACT</a>
+      </nav>
+      <div class="hp-head__in">
+        <p class="kicker">// HELP.EXE · 04 / 05</p>
+        <h1 class="hp-title" data-split>IT'S NOT YOU IT'S ME</h1>
+        <p class="hp-lead">didn't click? send it back within 30 days — returns are free, size swaps too.</p>
+      </div>
+    </header>
+
+    <!-- eligibility checker -->
+    <section class="rt-check">
+      <div class="rt-check__q">
+        <p class="kicker">// CAN I RETURN IT?</p>
+        <h2 class="hp-h2">answer honestly, doll</h2>
+
+        <div class="rt-days">
+          <label for="days">days since it arrived</label>
+          <output id="daysOut">7</output>
+          <input type="range" id="days" min="0" max="60" value="7" />
+          <div class="rt-days__scale"><span>0</span><span class="rt-days__limit">30 ♡</span><span>60</span></div>
+        </div>
+
+        <div class="rt-toggles" id="toggles">
+          <button type="button" class="rt-tog" data-k="tags" aria-pressed="true"><i></i>tags are still on</button>
+          <button type="button" class="rt-tog" data-k="unworn" aria-pressed="true"><i></i>unworn, unwashed, no perfume</button>
+          <button type="button" class="rt-tog" data-k="earrings" aria-pressed="false"><i></i>it's earrings or body jewellery</button>
+          <button type="button" class="rt-tog" data-k="gift" aria-pressed="false"><i></i>it's a gift card</button>
+        </div>
+      </div>
+
+      <div class="rt-verdict" id="verdict" aria-live="polite">
+        <p class="rt-verdict__paper">
+          <span class="rt-verdict__head">RETURN REQUEST #<b id="rtNo">0000</b></span>
+          <span class="rt-verdict__stamp" id="stamp">APPROVED</span>
+          <span class="rt-verdict__why" id="why">—</span>
+        </p>
+      </div>
+    </section>
+
+    <!-- return.exe wizard -->
+    <section class="rt-wiz">
+      <div class="win win--static rt-wiz__win">
+        <div class="win__bar"><span>return_wizard.exe</span><div class="win__btns"><i>_</i><i>×</i></div></div>
+        <div class="win__body rt-wiz__body">
+          <div class="rt-wiz__side" aria-hidden="true">
+            <svg viewBox="0 0 12 12" shape-rendering="crispEdges"><path d="M1 3h10v8H1z" fill="#ffa9cf"/><path d="M0 1h12v2H0z" fill="#ff5ea8"/><path d="M5 1h2v10H5z" fill="#0a0a0b"/><path d="M4 0h1v1H4zM7 0h1v1H7z" fill="#0a0a0b"/></svg>
+          </div>
+          <div class="rt-wiz__main">
+            <ol class="rt-wiz__steps" id="wizSteps">
+              <li data-step="0">
+                <h3>welcome to the return wizard ♡</h3>
+                <p>this wizard will guide you through sending a piece back. it takes about 5 minutes and zero drama.</p>
+              </li>
+              <li data-step="1" hidden>
+                <h3>step 1 — tell us</h3>
+                <p>email us your order number and what's going back (and if you'd like a different size instead). we reply within a working day.</p>
+              </li>
+              <li data-step="2" hidden>
+                <h3>step 2 — pack it</h3>
+                <p>tags on, in the original bag if you still have it. the pink box can go back too — or keep it, we won't tell.</p>
+              </li>
+              <li data-step="3" hidden>
+                <h3>step 3 — label + drop</h3>
+                <p>we send you a prepaid label. stick it on, drop the parcel at any carrier point, keep the receipt.</p>
+              </li>
+              <li data-step="4" hidden>
+                <h3>step 4 — money back</h3>
+                <p>once it lands at doll HQ, we check it and refund your original payment within 10 days. size swaps ship out as soon as it's scanned.</p>
+              </li>
+            </ol>
+            <div class="win__progress rt-wiz__prog"><span id="wizBar"></span></div>
+            <div class="rt-wiz__nav">
+              <button type="button" class="winbtn" id="wizBack" disabled>&lt; BACK</button>
+              <button type="button" class="winbtn" id="wizNext">NEXT &gt;</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- the rules -->
+    <section class="rt-rules">
+      <h2 class="hp-h2">the fine print, but cute</h2>
+      <ul>
+        <li><b>30 DAYS</b><span>from the day it's delivered.</span></li>
+        <li><b>FREE</b><span>returns and size exchanges, always.</span></li>
+        <li><b>10 DAYS</b><span>to refund you once it's back with us.</span></li>
+        <li><b>NO-GO</b><span>earrings + body jewellery (hygiene), and gift cards.</span></li>
+      </ul>
+    </section>
+
+    <aside class="hp-still">
+      <p class="hp-still__big">ready to send it?</p>
+      <p>drop us your order number and we'll get the label over.</p>
+      <a href="contact.html" class="btn btn--dark mag"><span>START A RETURN</span><i>→</i></a>
+    </aside>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="footer">
+    <div class="footer__top">
+      <div class="footer__col">
+        <h4>SHOP</h4>
+        <a href="new-in.html">New in</a><a href="shop.html">All products</a><a href="drops.html">Drops</a><a href="shop.html?cat=accessories">Accessories</a><a href="gift-cards.html">Gift cards</a>
+      </div>
+      <div class="footer__col">
+        <h4>HELP</h4>
+        <a href="shipping.html">Shipping</a><a href="returns.html">Returns</a><a href="size-guide.html">Size guide</a><a href="faq.html">FAQ</a><a href="contact.html">Contact</a>
+      </div>
+      <div class="footer__col">
+        <h4>DOLL WORLD</h4>
+        <a href="about.html">About</a><a href="lookbook.html">Lookbook</a><a href="journal.html">Journal</a><a href="stockists.html">Stockists</a>
+      </div>
+      <div class="footer__col">
+        <h4>SOCIAL</h4>
+        <a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a><a href="https://tiktok.com" target="_blank" rel="noopener">TikTok</a><a href="https://pinterest.com" target="_blank" rel="noopener">Pinterest</a>
+      </div>
+      <div class="footer__col footer__col--time">
+        <h4>TIME IN DOLLTOWN</h4>
+        <p class="footer__clock" data-clock-sec>00:00:00</p>
+        <a href="#top" class="link-arrow link-arrow--light" data-scramble>BACK TO TOP ↑</a>
+      </div>
+    </div>
+
+    <div class="footer__logo">
+      <canvas id="footLogo" class="dotlogo" aria-hidden="true"></canvas>
+    </div>
+
+    <div class="footer__bottom">
+      <span>© 2026 CYBERDOLL</span>
+      <span class="barcode" aria-hidden="true"></span>
+      <span><a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="cookies.html">Cookies</a></span>
+    </div>
+  </footer>
+
+  <script src="js/products.js?v=32"></script>
+  <script src="js/main.js?v=34"></script>
+  <script src="js/help.js?v=32"></script>
+  <script src="js/secrets.js?v=34"></script>
+</body>
+</html>

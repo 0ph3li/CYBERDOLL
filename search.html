@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SEARCH — CYBERDOLL</title>
+  <meta name="description" content="Search every CYBERDOLL piece, look and drop." />
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="img/favicon-32.png" sizes="32x32" type="image/png" />
+  <link rel="apple-touch-icon" href="img/apple-touch-icon.png" />
+  <meta name="theme-color" content="#0a0a0b" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Pinyon+Script&family=Playfair+Display:ital,wght@1,900&family=Silkscreen&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css?v=34" />
+  <link rel="stylesheet" href="css/shop.css?v=32" />
+  <link rel="stylesheet" href="css/search.css?v=32" />
+</head>
+<body class="page-search">
+
+  <!-- global fx -->
+  <div class="grain" aria-hidden="true"></div>
+  <canvas class="trail" id="trail" aria-hidden="true"></canvas>
+  <div class="cursor" id="cursor" aria-hidden="true">
+    <svg class="cursor__heart" viewBox="0 0 7 6" shape-rendering="crispEdges"><path d="M1 0h2v1h1V0h2v1h1v2H6v1H5v1H4v1H3V5H2V4H1V3H0V1h1z"/></svg>
+    <span class="cursor__label" id="cursorLabel"></span>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <!-- ================= HEADER ================= -->
+  <header class="header" id="header">
+    <div class="ticker" aria-label="Announcements">
+      <div class="marquee" data-speed="0.6">
+        <div class="marquee__track">
+          <span>✦ FREE SHIPPING OVER €90</span><span>✦ DROP #005 MIDNIGHT MALL — OUT NOW</span><span>✦ WORLDWIDE DELIVERY</span><span>✦ NEW DOLLS GET 10% OFF — JOIN THE CLUB</span><span>✦ LIMITED PIECES, NO RESTOCKS</span>
+        </div>
+      </div>
+    </div>
+
+    <nav class="nav" aria-label="Main">
+      <button class="nav__burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="menu">
+        <span></span><span></span>
+      </button>
+
+      <ul class="nav__links nav__links--left">
+        <li><a href="new-in.html" data-scramble>NEW IN</a></li>
+        <li><a href="shop.html" data-scramble>SHOP</a></li>
+        <li><a href="drops.html" data-scramble>DROPS</a></li>
+        <li><a href="lookbook.html" data-scramble>LOOKBOOK</a></li>
+      </ul>
+
+      <a href="index.html" class="nav__logo" aria-label="CYBERDOLL home">
+        <canvas id="navLogo" class="navlogo"></canvas>
+      </a>
+
+      <ul class="nav__links nav__links--right">
+        <li class="hide-sm"><a href="about.html" data-scramble>ABOUT</a></li>
+        <li class="hide-sm"><a href="search.html" data-scramble aria-current="page">SEARCH</a></li>
+        <li class="hide-sm"><a href="account.html" data-scramble>ACCOUNT</a></li>
+        <li><a href="wishlist.html" class="nav__wish" aria-label="Wishlist">
+          <svg viewBox="0 0 7 6" shape-rendering="crispEdges"><path d="M1 0h2v1h1V0h2v1h1v2H6v1H5v1H4v1H3V5H2V4H1V3H0V1h1z"/></svg>
+          <span id="wishCount">0</span>
+        </a></li>
+        <li><a href="cart.html" class="nav__bag">BAG [<span id="bagCount">0</span>]</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- mobile / overlay menu -->
+  <div class="menu" id="menu" aria-hidden="true">
+    <ul class="menu__list">
+      <li><a href="new-in.html"><small>01</small>NEW IN</a></li>
+      <li><a href="shop.html"><small>02</small>SHOP</a></li>
+      <li><a href="drops.html"><small>03</small>DROPS</a></li>
+      <li><a href="lookbook.html"><small>04</small>LOOKBOOK</a></li>
+      <li><a href="about.html"><small>05</small>ABOUT</a></li>
+      <li><a href="contact.html"><small>06</small>CONTACT</a></li>
+    </ul>
+    <div class="menu__foot">
+      <a href="account.html">ACCOUNT</a><a href="search.html" aria-current="page">SEARCH</a><a href="wishlist.html">WISHLIST ♡</a>
+    </div>
+  </div>
+
+    <main id="main" class="sr">
+
+    <!-- ================= ENGINE ================= -->
+    <section class="sr-engine" id="engine">
+      <div class="sr-engine__grid" aria-hidden="true"></div>
+
+      <h1 class="sr-logo" aria-label="CyberSearch">
+        <span>C</span><span>y</span><span>b</span><span>e</span><span>r</span><span>S</span><span>e</span><span>a</span><span>r</span><span>c</span><span>h</span>
+      </h1>
+      <p class="sr-tagline">the only search engine that only finds cute things ♡</p>
+
+      <form class="sr-form" id="searchForm" role="search">
+        <label for="q" class="sr-only">Search CYBERDOLL</label>
+        <div class="sr-field">
+          <svg viewBox="0 0 7 7" shape-rendering="crispEdges" aria-hidden="true"><path d="M1 0h3v1h1v1h1v3H5v1H4v1H1V6H0V1h1zm0 2v3h1v1h2V5h1V2H4V1H2v1z M5 5h1v1h1v1H6V6H5z"/></svg>
+          <input id="q" name="q" type="search" autocomplete="off" spellcheck="false" />
+          <span class="sr-field__ghost" id="ghost" aria-hidden="true"></span>
+          <kbd class="sr-field__kbd" aria-hidden="true">/</kbd>
+        </div>
+        <div class="sr-scan" aria-hidden="true"><span id="scan"></span></div>
+        <div class="sr-form__btns">
+          <button type="submit" class="winbtn sr-btn">SEARCH ♡</button>
+          <button type="button" class="winbtn sr-btn" id="lucky">I'M FEELING GLITCHY</button>
+        </div>
+      </form>
+
+      <div class="sr-chips">
+        <p class="sr-chips__row"><b>trending:</b> <span id="trending"></span></p>
+        <p class="sr-chips__row" id="recentRow" hidden><b>recent:</b> <span id="recent"></span> <button type="button" class="sr-clear" id="clearRecent">clear</button></p>
+      </div>
+    </section>
+
+    <!-- ================= RESULTS ================= -->
+    <section class="sr-results" aria-live="polite">
+      <div class="sr-status">
+        <p id="status"></p>
+        <p class="sr-didyou" id="didYou" hidden></p>
+      </div>
+
+      <div class="sr-filters" id="filters" role="tablist" aria-label="Filter results by category"></div>
+
+      <h2 class="sr-h" id="productsTitle">TRENDING NOW</h2>
+      <div class="shop-grid sr-grid" id="grid"></div>
+
+      <div class="sr-empty" id="empty" hidden>
+        <div class="win win--static">
+          <div class="win__bar win__bar--red"><span>search.exe</span><div class="win__btns"><i>×</i></div></div>
+          <div class="win__body win__err">
+            <span class="win__icon">!</span>
+            <p id="emptyMsg">No dolls found.</p>
+            <div class="win__actions"><a class="winbtn" href="shop.html">BROWSE THE SHOP ♡</a></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sr-web" id="webWrap" hidden>
+        <h2 class="sr-h">ELSEWHERE ON CYBERDOLL</h2>
+        <ol class="sr-web__list" id="web"></ol>
+      </div>
+    </section>
+
+    <!-- slot machine for "I'm feeling glitchy" -->
+    <div class="sr-slot" id="slot" aria-hidden="true" hidden>
+      <div class="sr-slot__win">
+        <div class="win__bar"><span>feeling_glitchy.exe</span><div class="win__btns"><i>×</i></div></div>
+        <div class="sr-slot__body">
+          <div class="sr-slot__img"><img id="slotImg" alt="" /></div>
+          <p class="sr-slot__name" id="slotName">…</p>
+          <p class="sr-slot__hint">rolling the rack…</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="footer">
+    <div class="footer__top">
+      <div class="footer__col">
+        <h4>SHOP</h4>
+        <a href="new-in.html">New in</a><a href="shop.html">All products</a><a href="drops.html">Drops</a><a href="shop.html?cat=accessories">Accessories</a><a href="gift-cards.html">Gift cards</a>
+      </div>
+      <div class="footer__col">
+        <h4>HELP</h4>
+        <a href="shipping.html">Shipping</a><a href="returns.html">Returns</a><a href="size-guide.html">Size guide</a><a href="faq.html">FAQ</a><a href="contact.html">Contact</a>
+      </div>
+      <div class="footer__col">
+        <h4>DOLL WORLD</h4>
+        <a href="about.html">About</a><a href="lookbook.html">Lookbook</a><a href="journal.html">Journal</a><a href="stockists.html">Stockists</a>
+      </div>
+      <div class="footer__col">
+        <h4>SOCIAL</h4>
+        <a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a><a href="https://tiktok.com" target="_blank" rel="noopener">TikTok</a><a href="https://pinterest.com" target="_blank" rel="noopener">Pinterest</a>
+      </div>
+      <div class="footer__col footer__col--time">
+        <h4>TIME IN DOLLTOWN</h4>
+        <p class="footer__clock" data-clock-sec>00:00:00</p>
+        <a href="#top" class="link-arrow link-arrow--light" data-scramble>BACK TO TOP ↑</a>
+      </div>
+    </div>
+
+    <div class="footer__logo">
+      <canvas id="footLogo" class="dotlogo" aria-hidden="true"></canvas>
+    </div>
+
+    <div class="footer__bottom">
+      <span>© 2026 CYBERDOLL</span>
+      <span class="barcode" aria-hidden="true"></span>
+      <span><a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="cookies.html">Cookies</a></span>
+    </div>
+  </footer>
+
+  <script src="js/products.js?v=32"></script>
+  <script src="js/main.js?v=34"></script>
+  <script src="js/cards.js?v=32"></script>
+  <script src="js/search.js?v=32"></script>
+  <script src="js/secrets.js?v=34"></script>
+</body>
+</html>

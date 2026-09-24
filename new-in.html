@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NEW IN · DROP #005 MIDNIGHT MALL — CYBERDOLL</title>
+  <meta name="description" content="DROP #005 Midnight Mall — new tops, corsets and bottoms in five moods: glitter, studs, wild things, laced and low-rise. Small runs, no restocks." />
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="img/favicon-32.png" sizes="32x32" type="image/png" />
+  <link rel="apple-touch-icon" href="img/apple-touch-icon.png" />
+  <meta name="theme-color" content="#0a0a0b" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Pinyon+Script&family=Playfair+Display:ital,wght@1,900&family=Silkscreen&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css?v=34" />
+  <link rel="stylesheet" href="css/shop.css?v=32" />
+  <link rel="stylesheet" href="css/newin.css?v=32" />
+</head>
+<body class="page-newin">
+
+  <!-- global fx -->
+  <div class="grain" aria-hidden="true"></div>
+  <canvas class="trail" id="trail" aria-hidden="true"></canvas>
+  <div class="cursor" id="cursor" aria-hidden="true">
+    <svg class="cursor__heart" viewBox="0 0 7 6" shape-rendering="crispEdges"><path d="M1 0h2v1h1V0h2v1h1v2H6v1H5v1H4v1H3V5H2V4H1V3H0V1h1z"/></svg>
+    <span class="cursor__label" id="cursorLabel"></span>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <!-- ================= HEADER ================= -->
+  <header class="header" id="header">
+    <div class="ticker" aria-label="Announcements">
+      <div class="marquee" data-speed="0.6">
+        <div class="marquee__track">
+          <span>✦ FREE SHIPPING OVER €90</span><span>✦ DROP #005 MIDNIGHT MALL — OUT NOW</span><span>✦ WORLDWIDE DELIVERY</span><span>✦ NEW DOLLS GET 10% OFF — JOIN THE CLUB</span><span>✦ LIMITED PIECES, NO RESTOCKS</span>
+        </div>
+      </div>
+    </div>
+
+    <nav class="nav" aria-label="Main">
+      <button class="nav__burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="menu">
+        <span></span><span></span>
+      </button>
+
+      <ul class="nav__links nav__links--left">
+        <li><a href="new-in.html" data-scramble aria-current="page">NEW IN</a></li>
+        <li><a href="shop.html" data-scramble>SHOP</a></li>
+        <li><a href="drops.html" data-scramble>DROPS</a></li>
+        <li><a href="lookbook.html" data-scramble>LOOKBOOK</a></li>
+      </ul>
+
+      <a href="index.html" class="nav__logo" aria-label="CYBERDOLL home">
+        <canvas id="navLogo" class="navlogo"></canvas>
+      </a>
+
+      <ul class="nav__links nav__links--right">
+        <li class="hide-sm"><a href="about.html" data-scramble>ABOUT</a></li>
+        <li class="hide-sm"><a href="search.html" data-scramble>SEARCH</a></li>
+        <li class="hide-sm"><a href="account.html" data-scramble>ACCOUNT</a></li>
+        <li><a href="wishlist.html" class="nav__wish" aria-label="Wishlist">
+          <svg viewBox="0 0 7 6" shape-rendering="crispEdges"><path d="M1 0h2v1h1V0h2v1h1v2H6v1H5v1H4v1H3V5H2V4H1V3H0V1h1z"/></svg>
+          <span id="wishCount">0</span>
+        </a></li>
+        <li><a href="cart.html" class="nav__bag">BAG [<span id="bagCount">0</span>]</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- mobile / overlay menu -->
+  <div class="menu" id="menu" aria-hidden="true">
+    <ul class="menu__list">
+      <li><a href="new-in.html" aria-current="page"><small>01</small>NEW IN</a></li>
+      <li><a href="shop.html"><small>02</small>SHOP</a></li>
+      <li><a href="drops.html"><small>03</small>DROPS</a></li>
+      <li><a href="lookbook.html"><small>04</small>LOOKBOOK</a></li>
+      <li><a href="about.html"><small>05</small>ABOUT</a></li>
+      <li><a href="contact.html"><small>06</small>CONTACT</a></li>
+    </ul>
+    <div class="menu__foot">
+      <a href="account.html">ACCOUNT</a><a href="search.html">SEARCH</a><a href="wishlist.html">WISHLIST ♡</a>
+    </div>
+  </div>
+
+    <main id="main" class="ni">
+
+    <!-- ================= HERO ================= -->
+    <section class="ni-hero">
+      <div class="ni-hero__slots" aria-hidden="true">
+        <div class="ni-slot" id="slotA"></div>
+        <div class="ni-slot ni-slot--rev" id="slotB"></div>
+        <div class="ni-slot" id="slotC"></div>
+      </div>
+      <div class="ni-hero__veil" aria-hidden="true"></div>
+
+      <div class="ni-hero__content">
+        <p class="kicker kicker--light ni-hero__kicker"><span class="ni-dot"></span>NEW IN — DROP #005 — OUT NOW</p>
+        <h1 class="ni-title" aria-label="Midnight Mall">
+          <span class="ni-title__line" data-glitch="MIDNIGHT">MIDNIGHT</span>
+          <span class="ni-title__line ni-title__line--script">mall</span>
+        </h1>
+        <div class="ni-term" id="term" aria-hidden="true"></div>
+        <div class="ni-hero__ctas">
+          <a href="#drop" class="btn btn--light mag"><span>SHOP THE DROP</span><i>↓</i></a>
+          <a href="#story" class="btn btn--ghost mag"><span>READ THE STORY</span></a>
+        </div>
+      </div>
+
+      <ul class="ni-stats" aria-label="Drop facts">
+        <li><b data-count="0" data-stat="pieces">00</b><span>NEW<br />PIECES</span></li>
+        <li><b data-count="0" data-stat="moods">0</b><span>MOODS</span></li>
+        <li><b data-count="0">0</b><span>RESTOCKS</span></li>
+      </ul>
+
+      <svg class="ni-hero__heart" viewBox="0 0 7 6" shape-rendering="crispEdges" aria-hidden="true"><path d="M1 0h2v1h1V0h2v1h1v2H6v1H5v1H4v1H3V5H2V4H1V3H0V1h1z"/></svg>
+    </section>
+
+    <div class="band band--shop band--ni" aria-hidden="true">
+      <div class="marquee" data-speed="1.3">
+        <div class="marquee__track">
+          <span>DROP #005</span><em>✦</em><span>MIDNIGHT MALL</span><em>✦</em><span>NEW TOPS + CORSETS + BOTTOMS</span><em>✦</em><span>RHINESTONES</span><em>✦</em><span>STUDS</span><em>✦</em><span>LEOPARD</span><em>✦</em><span>LACE-UPS</span><em>✦</em><span>LOW RISE</span><em>✦</em>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= STORY ================= -->
+    <section class="ni-story" id="story">
+      <div class="ni-story__sticky">
+        <p class="kicker">// THE STORY</p>
+        <p class="ni-story__big" id="storyText">
+          IT'S 11:58PM. THE SHUTTERS ARE HALF DOWN, THE FOUNTAIN IS OFF AND THE ESCALATOR IS STILL MOVING. <em>somewhere</em> IN THE FOOD COURT A GIRL IN RHINESTONES IS FIXING HER LIPGLOSS IN A SPOON. <mark>THIS IS FOR HER.</mark>
+        </p>
+        <p class="ni-story__small">DROP #005 is our love letter to the 2004 mall at closing time — cheap glitter, real leather attitude, leopard everywhere. Tops, corsets and bottoms in five moods, made in small runs and never restocked.</p>
+      </div>
+    </section>
+
+    <!-- ================= MOODS ================= -->
+    <section class="ni-moods" id="moods" aria-label="The three moods">
+
+      <article class="mood" data-mood="glitter">
+        <div class="mood__text">
+          <span class="mood__num">01</span>
+          <p class="kicker">// MOOD 01 — <span data-mood-count>0</span> PIECES</p>
+          <h2 class="mood__title" data-split>GLITTER IN</h2>
+          <h2 class="mood__title mood__title--outline" data-split>THE FOOD COURT</h2>
+          <p class="mood__desc" data-reveal>Tube tops, foil halters, liquid-silver fringe and rhinestones that catch every fluorescent light. The Friday-night version of you.</p>
+          <a href="shop.html?look=glitter" class="btn btn--dark mag" data-reveal><span>SHOP GLITTER</span><i>→</i></a>
+        </div>
+        <div class="mood__collage">
+          <a class="mood__pic mood__pic--1" data-speed="-0.12"><div class="media"><img alt="" /></div></a>
+          <a class="mood__pic mood__pic--2" data-speed="0.08"><div class="media"><img alt="" /></div></a>
+          <a class="mood__pic mood__pic--3" data-speed="-0.04"><div class="media"><img alt="" /></div></a>
+          <span class="mood__sticker" aria-hidden="true">✦ SPARKLY</span>
+        </div>
+      </article>
+
+      <article class="mood mood--flip" data-mood="studs">
+        <div class="mood__text">
+          <span class="mood__num">02</span>
+          <p class="kicker">// MOOD 02 — <span data-mood-count>0</span> PIECES</p>
+          <h2 class="mood__title" data-split>STUDS</h2>
+          <h2 class="mood__title mood__title--outline" data-split>AFTER DARK</h2>
+          <p class="mood__desc" data-reveal>A studded corset, safety-pinned tanks, lace, pinstripes and a skull or two. What you wear when security already knows your name.</p>
+          <a href="shop.html?look=studs" class="btn btn--dark mag" data-reveal><span>SHOP STUDS</span><i>→</i></a>
+        </div>
+        <div class="mood__collage">
+          <a class="mood__pic mood__pic--1" data-speed="-0.1"><div class="media"><img alt="" /></div></a>
+          <a class="mood__pic mood__pic--2" data-speed="0.1"><div class="media"><img alt="" /></div></a>
+          <a class="mood__pic mood__pic--3" data-speed="-0.06"><div class="media"><img alt="" /></div></a>
+          <span class="mood__sticker mood__sticker--red" aria-hidden="true">☠ HANDLE W/ CARE</span>
+        </div>
+      </article>
+
+      <article class="mood" data-mood="wild">
+        <div class="mood__text">
+          <span class="mood__num">03</span>
+          <p class="kicker">// MOOD 03 — <span data-mood-count>0</span> PIECES</p>
+          <h2 class="mood__title" data-split>WILD</h2>
+          <h2 class="mood__title mood__title--outline" data-split>THINGS</h2>
+          <p class="mood__desc" data-reveal>Leopard bandeaus, snake-print ribs and a slouchy knit for the ride home. Loud prints, softer edges.</p>
+          <a href="shop.html?look=wild" class="btn btn--dark mag" data-reveal><span>SHOP WILD</span><i>→</i></a>
+        </div>
+        <div class="mood__collage">
+          <a class="mood__pic mood__pic--1" data-speed="-0.12"><div class="media"><img alt="" /></div></a>
+          <a class="mood__pic mood__pic--2" data-speed="0.06"><div class="media"><img alt="" /></div></a>
+          <a class="mood__pic mood__pic--3" data-speed="-0.08"><div class="media"><img alt="" /></div></a>
+          <span class="mood__sticker mood__sticker--pink" aria-hidden="true">♡ RAWR</span>
+        </div>
+      </article>
+
+      <article class="mood mood--flip" data-mood="laced">
+        <div class="mood__text">
+          <span class="mood__num">04</span>
+          <p class="kicker">// MOOD 04 — <span data-mood-count>0</span> PIECES</p>
+          <h2 class="mood__title" data-split>LACED &amp;</h2>
+          <h2 class="mood__title mood__title--outline" data-split>LOADED</h2>
+          <p class="mood__desc" data-reveal>Nine corsets: buckled moto leather, worn-in bustiers, leopard satin, mesh peekaboos and one in blood-red lace. Pull the laces tight, the night is long.</p>
+          <a href="shop.html?look=laced" class="btn btn--dark mag" data-reveal><span>SHOP CORSETS</span><i>→</i></a>
+        </div>
+        <div class="mood__collage">
+          <a class="mood__pic mood__pic--1" data-speed="-0.1"><div class="media"><img alt="" /></div></a>
+          <a class="mood__pic mood__pic--2" data-speed="0.09"><div class="media"><img alt="" /></div></a>
+          <a class="mood__pic mood__pic--3" data-speed="-0.05"><div class="media"><img alt="" /></div></a>
+          <span class="mood__sticker" aria-hidden="true">⛓ PULL TIGHT</span>
+        </div>
+      </article>
+
+      <article class="mood" data-mood="lowrise">
+        <div class="mood__text">
+          <span class="mood__num">05</span>
+          <p class="kicker">// MOOD 05 — <span data-mood-count>0</span> PIECES</p>
+          <h2 class="mood__title" data-split>LOW RISE,</h2>
+          <h2 class="mood__title mood__title--outline" data-split>HIGH DRAMA</h2>
+          <p class="mood__desc" data-reveal>Laced-up flares, gold-splattered bootcuts, jeans shredded to the ankle, fur-hem minis and a leopard ra-ra. Hip bones out, standards up.</p>
+          <a href="shop.html?look=lowrise" class="btn btn--dark mag" data-reveal><span>SHOP BOTTOMS</span><i>→</i></a>
+        </div>
+        <div class="mood__collage">
+          <a class="mood__pic mood__pic--1" data-speed="-0.12"><div class="media"><img alt="" /></div></a>
+          <a class="mood__pic mood__pic--2" data-speed="0.08"><div class="media"><img alt="" /></div></a>
+          <a class="mood__pic mood__pic--3" data-speed="-0.05"><div class="media"><img alt="" /></div></a>
+          <span class="mood__sticker" aria-hidden="true">★ LOW LOW LOW</span>
+        </div>
+      </article>
+    </section>
+
+    <!-- ================= THE FULL DROP ================= -->
+    <section class="ni-drop" id="drop">
+      <header class="ni-drop__head">
+        <div>
+          <p class="kicker">// THE FULL DROP</p>
+          <h2 class="h-display" data-split>EVERY</h2>
+          <h2 class="h-display h-display--outline" data-split>PIECE</h2>
+        </div>
+        <div class="ni-tabs" role="tablist" aria-label="Filter by mood">
+          <button type="button" class="chip" role="tab" data-mood="all" aria-selected="true">ALL</button>
+          <button type="button" class="chip" role="tab" data-mood="glitter" aria-selected="false">01 GLITTER</button>
+          <button type="button" class="chip" role="tab" data-mood="studs" aria-selected="false">02 STUDS</button>
+          <button type="button" class="chip" role="tab" data-mood="wild" aria-selected="false">03 WILD</button>
+          <button type="button" class="chip" role="tab" data-mood="laced" aria-selected="false">04 LACED</button>
+          <button type="button" class="chip" role="tab" data-mood="lowrise" aria-selected="false">05 LOW-RISE</button>
+        </div>
+      </header>
+      <div class="shop-grid" id="dropGrid"></div>
+    </section>
+
+    <!-- ================= DROP CALENDAR ================= -->
+    <section class="ni-cal" aria-label="Drop calendar">
+      <p class="kicker kicker--light">// DROP CALENDAR</p>
+      <ol class="ni-cal__list">
+        <li class="ni-cal__item is-past">
+          <span class="ni-cal__code">#003</span>
+          <span class="ni-cal__name">HAZARDOUS</span>
+          <span class="ni-cal__state">ALMOST GONE</span>
+          <a href="drops.html#drop-003" class="ni-cal__link">SHOP →</a>
+        </li>
+        <li class="ni-cal__item is-past">
+          <span class="ni-cal__code">#004</span>
+          <span class="ni-cal__name">ANGEL.EXE</span>
+          <span class="ni-cal__state">LOW STOCK</span>
+          <a href="drops.html#drop-004" class="ni-cal__link">SHOP →</a>
+        </li>
+        <li class="ni-cal__item is-now">
+          <span class="ni-cal__code">#005</span>
+          <span class="ni-cal__name">MIDNIGHT MALL</span>
+          <span class="ni-cal__state"><span class="ni-dot"></span>OUT NOW</span>
+          <a href="#drop" class="ni-cal__link">SHOP →</a>
+        </li>
+        <li class="ni-cal__item is-next">
+          <span class="ni-cal__code">#006</span>
+          <span class="ni-cal__name" data-secret>??????????</span>
+          <span class="ni-cal__state">FRI 13.11</span>
+          <span class="ni-cal__link">LOCKED 🔒</span>
+        </li>
+      </ol>
+
+      <div class="ni-next">
+        <div class="ni-next__count" aria-live="off">
+          <p class="kicker kicker--light">DROP #006 UNLOCKS IN</p>
+          <div class="ni-count" id="countdown">
+            <div><b data-u="d">00</b><span>DAYS</span></div>
+            <div><b data-u="h">00</b><span>HRS</span></div>
+            <div><b data-u="m">00</b><span>MIN</span></div>
+            <div><b data-u="s">00</b><span>SEC</span></div>
+          </div>
+        </div>
+        <form class="ni-notify" id="notifyForm" novalidate>
+          <label for="notifyEmail">Get the secret link 1 hour early ♡</label>
+          <div class="ni-notify__row">
+            <input id="notifyEmail" type="email" placeholder="your@email.com" autocomplete="email" required />
+            <button type="submit" class="winbtn">NOTIFY ME</button>
+          </div>
+          <p class="ni-notify__msg" id="notifyMsg" role="status"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="footer">
+    <div class="footer__top">
+      <div class="footer__col">
+        <h4>SHOP</h4>
+        <a href="new-in.html">New in</a><a href="shop.html">All products</a><a href="drops.html">Drops</a><a href="shop.html?cat=accessories">Accessories</a><a href="gift-cards.html">Gift cards</a>
+      </div>
+      <div class="footer__col">
+        <h4>HELP</h4>
+        <a href="shipping.html">Shipping</a><a href="returns.html">Returns</a><a href="size-guide.html">Size guide</a><a href="faq.html">FAQ</a><a href="contact.html">Contact</a>
+      </div>
+      <div class="footer__col">
+        <h4>DOLL WORLD</h4>
+        <a href="about.html">About</a><a href="lookbook.html">Lookbook</a><a href="journal.html">Journal</a><a href="stockists.html">Stockists</a>
+      </div>
+      <div class="footer__col">
+        <h4>SOCIAL</h4>
+        <a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a><a href="https://tiktok.com" target="_blank" rel="noopener">TikTok</a><a href="https://pinterest.com" target="_blank" rel="noopener">Pinterest</a>
+      </div>
+      <div class="footer__col footer__col--time">
+        <h4>TIME IN DOLLTOWN</h4>
+        <p class="footer__clock" data-clock-sec>00:00:00</p>
+        <a href="#top" class="link-arrow link-arrow--light" data-scramble>BACK TO TOP ↑</a>
+      </div>
+    </div>
+
+    <div class="footer__logo">
+      <canvas id="footLogo" class="dotlogo" aria-hidden="true"></canvas>
+    </div>
+
+    <div class="footer__bottom">
+      <span>© 2026 CYBERDOLL</span>
+      <span class="barcode" aria-hidden="true"></span>
+      <span><a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="cookies.html">Cookies</a></span>
+    </div>
+  </footer>
+
+  <script src="js/products.js?v=32"></script>
+  <script src="js/main.js?v=34"></script>
+  <script src="js/cards.js?v=32"></script>
+  <script src="js/newin.js?v=32"></script>
+  <script src="js/secrets.js?v=34"></script>
+</body>
+</html>

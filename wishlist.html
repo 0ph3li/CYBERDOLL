@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WISHLIST — CYBERDOLL</title>
+  <meta name="description" content="Your CYBERDOLL wishlist — pin it, want it, plan it, share it." />
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="img/favicon-32.png" sizes="32x32" type="image/png" />
+  <link rel="apple-touch-icon" href="img/apple-touch-icon.png" />
+  <meta name="theme-color" content="#0a0a0b" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Pinyon+Script&family=Playfair+Display:ital,wght@1,900&family=Silkscreen&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css?v=34" />
+  <link rel="stylesheet" href="css/shop.css?v=32" />
+  <link rel="stylesheet" href="css/wishlist.css?v=32" />
+</head>
+<body class="page-wish">
+
+  <!-- global fx -->
+  <div class="grain" aria-hidden="true"></div>
+  <canvas class="trail" id="trail" aria-hidden="true"></canvas>
+  <div class="cursor" id="cursor" aria-hidden="true">
+    <svg class="cursor__heart" viewBox="0 0 7 6" shape-rendering="crispEdges"><path d="M1 0h2v1h1V0h2v1h1v2H6v1H5v1H4v1H3V5H2V4H1V3H0V1h1z"/></svg>
+    <span class="cursor__label" id="cursorLabel"></span>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <!-- ================= HEADER ================= -->
+  <header class="header" id="header">
+    <div class="ticker" aria-label="Announcements">
+      <div class="marquee" data-speed="0.6">
+        <div class="marquee__track">
+          <span>✦ FREE SHIPPING OVER €90</span><span>✦ DROP #005 MIDNIGHT MALL — OUT NOW</span><span>✦ WORLDWIDE DELIVERY</span><span>✦ NEW DOLLS GET 10% OFF — JOIN THE CLUB</span><span>✦ LIMITED PIECES, NO RESTOCKS</span>
+        </div>
+      </div>
+    </div>
+
+    <nav class="nav" aria-label="Main">
+      <button class="nav__burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="menu">
+        <span></span><span></span>
+      </button>
+
+      <ul class="nav__links nav__links--left">
+        <li><a href="new-in.html" data-scramble>NEW IN</a></li>
+        <li><a href="shop.html" data-scramble>SHOP</a></li>
+        <li><a href="drops.html" data-scramble>DROPS</a></li>
+        <li><a href="lookbook.html" data-scramble>LOOKBOOK</a></li>
+      </ul>
+
+      <a href="index.html" class="nav__logo" aria-label="CYBERDOLL home">
+        <canvas id="navLogo" class="navlogo"></canvas>
+      </a>
+
+      <ul class="nav__links nav__links--right">
+        <li class="hide-sm"><a href="about.html" data-scramble>ABOUT</a></li>
+        <li class="hide-sm"><a href="search.html" data-scramble>SEARCH</a></li>
+        <li class="hide-sm"><a href="account.html" data-scramble>ACCOUNT</a></li>
+        <li><a href="wishlist.html" class="nav__wish" aria-label="Wishlist" aria-current="page">
+          <svg viewBox="0 0 7 6" shape-rendering="crispEdges"><path d="M1 0h2v1h1V0h2v1h1v2H6v1H5v1H4v1H3V5H2V4H1V3H0V1h1z"/></svg>
+          <span id="wishCount">0</span>
+        </a></li>
+        <li><a href="cart.html" class="nav__bag">BAG [<span id="bagCount">0</span>]</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- mobile / overlay menu -->
+  <div class="menu" id="menu" aria-hidden="true">
+    <ul class="menu__list">
+      <li><a href="new-in.html"><small>01</small>NEW IN</a></li>
+      <li><a href="shop.html"><small>02</small>SHOP</a></li>
+      <li><a href="drops.html"><small>03</small>DROPS</a></li>
+      <li><a href="lookbook.html"><small>04</small>LOOKBOOK</a></li>
+      <li><a href="about.html"><small>05</small>ABOUT</a></li>
+      <li><a href="contact.html"><small>06</small>CONTACT</a></li>
+    </ul>
+    <div class="menu__foot">
+      <a href="account.html">ACCOUNT</a><a href="search.html">SEARCH</a><a href="wishlist.html">WISHLIST ♡</a>
+    </div>
+  </div>
+
+    <main id="main" class="wl">
+
+    <!-- night sky hero -->
+    <section class="wl-hero">
+      <div class="wl-sky" aria-hidden="true"><i class="wl-stars wl-stars--a"></i><i class="wl-stars wl-stars--b"></i><i class="wl-shoot"></i><i class="wl-shoot wl-shoot--2"></i></div>
+      <div class="wl-hero__in">
+        <p class="kicker">// STAR LIGHT, STAR BRIGHT</p>
+        <h1 class="wl-title">
+          <span class="wl-title__script">make a</span>
+          <span class="wl-title__big" data-split>WISH LIST</span>
+        </h1>
+        <p class="wl-who" id="who"></p>
+      </div>
+
+      <!-- love-o-meter -->
+      <aside class="wl-meter" aria-label="Wishlist stats">
+        <div class="wl-meter__heart" aria-hidden="true">
+          <svg viewBox="0 0 7 6" shape-rendering="crispEdges">
+            <defs><clipPath id="heartClip"><path d="M1 0h2v1h1V0h2v1h1v2H6v1H5v1H4v1H3V5H2V4H1V3H0V1h1z"/></clipPath></defs>
+            <path d="M1 0h2v1h1V0h2v1h1v2H6v1H5v1H4v1H3V5H2V4H1V3H0V1h1z" fill="rgba(255,255,255,.12)"/>
+            <g clip-path="url(#heartClip)"><rect id="heartFill" x="0" y="6" width="7" height="6" fill="#ff5ea8"/></g>
+          </svg>
+        </div>
+        <p class="wl-meter__label">LOVE-O-METER</p>
+        <dl class="wl-meter__stats">
+          <div><dt>wishes</dt><dd id="stCount">0</dd></div>
+          <div><dt>if u got it all</dt><dd id="stTotal">€0</dd></div>
+          <div><dt>most wanted</dt><dd id="stTop">—</dd></div>
+        </dl>
+      </aside>
+    </section>
+
+    <!-- friend's list banner -->
+    <div class="wl-shared" id="shared" hidden>
+      <p><b>♡ YOU'RE PEEKING AT A FRIEND'S WISHLIST</b> — <span id="sharedCount">0</span> pieces. birthday? payday? just saying.</p>
+      <div class="wl-shared__ctas">
+        <button type="button" class="winbtn" id="saveAll">SAVE ALL TO MINE ♡</button>
+        <a href="wishlist.html" class="winbtn">MY LIST →</a>
+      </div>
+    </div>
+
+    <!-- toolbar -->
+    <div class="wl-tools" id="tools">
+      <div class="wl-chips" id="chips" role="tablist" aria-label="Filter by category"></div>
+      <div class="wl-tools__right">
+        <label class="wl-sort"><span>SORT</span>
+          <select id="sort">
+            <option value="pinned">pinned order</option>
+            <option value="want">want it most</option>
+            <option value="low">price ↑</option>
+            <option value="high">price ↓</option>
+          </select>
+        </label>
+        <button type="button" class="winbtn" id="shareBtn">SHARE ♡</button>
+        <button type="button" class="winbtn wl-allbag" id="allBag">ALL → BAG</button>
+      </div>
+    </div>
+
+    <!-- the board -->
+    <section class="wl-board" aria-label="Your wishes">
+      <ul class="wl-pins" id="pins"></ul>
+    </section>
+
+    <!-- empty -->
+    <section class="wl-empty" id="empty" hidden>
+      <svg class="wl-empty__star" viewBox="0 0 11 11" shape-rendering="crispEdges" aria-hidden="true">
+        <path d="M5 0h1v3h1v1h4v1h-1v1H9v1h1v4H9v-1H8V9H7V8H4v1H3v1H2v1H1V7h1V6H1V5H0V4h4V3h1z" fill="#ffe36e"/>
+        <path d="M4 5h1v1H4zM6 5h1v1H6zM5 6h1v1H5z" fill="#0a0a0b"/>
+      </svg>
+      <p class="wl-empty__big">no wishes yet</p>
+      <p class="wl-empty__sub" id="emptySub">tap the ♡ on anything you love and it lands up here, under the stars.</p>
+      <div class="wl-empty__ctas">
+        <a href="shop.html" class="btn btn--dark mag"><span>GO WISH-SHOPPING</span><i>→</i></a>
+        <a href="account.html" class="btn btn--ghost-dark mag" id="emptyLogin"><span>LOG IN</span></a>
+      </div>
+    </section>
+
+    <!-- payday planner -->
+    <section class="wl-plan" id="plan">
+      <div class="wl-plan__head">
+        <p class="kicker">// PAYDAY PLANNER</p>
+        <h2 class="wl-plan__title">how much can<br />u <em>spend?</em></h2>
+        <p class="wl-plan__sub">slide your budget. we fill it with what you want most first.</p>
+      </div>
+      <div class="wl-plan__box">
+        <div class="wl-plan__budget">
+          <output id="budgetOut">€150</output>
+          <input type="range" id="budget" min="0" max="500" step="5" value="150" aria-label="Budget in euro" />
+          <div class="wl-plan__scale"><span>€0</span><span id="budgetMax">€500</span></div>
+        </div>
+        <ul class="wl-plan__picks" id="picks"></ul>
+        <p class="wl-plan__sum" id="planSum">—</p>
+        <button type="button" class="btn btn--dark mag" id="planBag"><span>PUT THESE IN MY BAG</span><i>→</i></button>
+      </div>
+    </section>
+
+    <!-- suggestions -->
+    <section class="wl-more" id="more">
+      <h2 class="wl-more__title" id="moreTitle">MORE TO WISH FOR</h2>
+      <div class="shop-grid wl-grid" id="moreGrid"></div>
+    </section>
+
+    <!-- share.exe -->
+    <div class="wl-modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" hidden>
+      <div class="win win--static wl-modal__win">
+        <div class="win__bar"><span id="modalTitle">share_wishlist.exe</span><div class="win__btns"><i>×</i></div></div>
+        <div class="win__body">
+          <p class="wl-modal__txt" id="modalTxt">link copied ♡ send it to your bestie (or drop it in the group chat 3 days before your birthday).</p>
+          <input class="wl-modal__link" id="shareLink" type="text" readonly aria-label="Wishlist link" />
+          <div class="win__actions"><button type="button" class="winbtn" id="modalOk">OK ♡</button></div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="footer">
+    <div class="footer__top">
+      <div class="footer__col">
+        <h4>SHOP</h4>
+        <a href="new-in.html">New in</a><a href="shop.html">All products</a><a href="drops.html">Drops</a><a href="shop.html?cat=accessories">Accessories</a><a href="gift-cards.html">Gift cards</a>
+      </div>
+      <div class="footer__col">
+        <h4>HELP</h4>
+        <a href="shipping.html">Shipping</a><a href="returns.html">Returns</a><a href="size-guide.html">Size guide</a><a href="faq.html">FAQ</a><a href="contact.html">Contact</a>
+      </div>
+      <div class="footer__col">
+        <h4>DOLL WORLD</h4>
+        <a href="about.html">About</a><a href="lookbook.html">Lookbook</a><a href="journal.html">Journal</a><a href="stockists.html">Stockists</a>
+      </div>
+      <div class="footer__col">
+        <h4>SOCIAL</h4>
+        <a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a><a href="https://tiktok.com" target="_blank" rel="noopener">TikTok</a><a href="https://pinterest.com" target="_blank" rel="noopener">Pinterest</a>
+      </div>
+      <div class="footer__col footer__col--time">
+        <h4>TIME IN DOLLTOWN</h4>
+        <p class="footer__clock" data-clock-sec>00:00:00</p>
+        <a href="#top" class="link-arrow link-arrow--light" data-scramble>BACK TO TOP ↑</a>
+      </div>
+    </div>
+
+    <div class="footer__logo">
+      <canvas id="footLogo" class="dotlogo" aria-hidden="true"></canvas>
+    </div>
+
+    <div class="footer__bottom">
+      <span>© 2026 CYBERDOLL</span>
+      <span class="barcode" aria-hidden="true"></span>
+      <span><a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="cookies.html">Cookies</a></span>
+    </div>
+  </footer>
+
+  <script src="js/products.js?v=32"></script>
+  <script src="js/main.js?v=34"></script>
+  <script src="js/cards.js?v=32"></script>
+  <script src="js/wishlist.js?v=32"></script>
+  <script src="js/secrets.js?v=34"></script>
+</body>
+</html>

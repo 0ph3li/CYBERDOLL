@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SIZE GUIDE — CYBERDOLL</title>
+  <meta name="description" content="Find your CYBERDOLL size in three measurements — clothes, shoes and accessories charts in cm and inches." />
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="img/favicon-32.png" sizes="32x32" type="image/png" />
+  <link rel="apple-touch-icon" href="img/apple-touch-icon.png" />
+  <meta name="theme-color" content="#0a0a0b" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Pinyon+Script&family=Playfair+Display:ital,wght@1,900&family=Silkscreen&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css?v=34" />
+  <link rel="stylesheet" href="css/shop.css?v=32" />
+  <link rel="stylesheet" href="css/help.css?v=34" />
+</head>
+<body class="page-help">
+
+  <!-- global fx -->
+  <div class="grain" aria-hidden="true"></div>
+  <canvas class="trail" id="trail" aria-hidden="true"></canvas>
+  <div class="cursor" id="cursor" aria-hidden="true">
+    <svg class="cursor__heart" viewBox="0 0 7 6" shape-rendering="crispEdges"><path d="M1 0h2v1h1V0h2v1h1v2H6v1H5v1H4v1H3V5H2V4H1V3H0V1h1z"/></svg>
+    <span class="cursor__label" id="cursorLabel"></span>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <!-- ================= HEADER ================= -->
+  <header class="header" id="header">
+    <div class="ticker" aria-label="Announcements">
+      <div class="marquee" data-speed="0.6">
+        <div class="marquee__track">
+          <span>✦ FREE SHIPPING OVER €90</span><span>✦ DROP #005 MIDNIGHT MALL — OUT NOW</span><span>✦ WORLDWIDE DELIVERY</span><span>✦ NEW DOLLS GET 10% OFF — JOIN THE CLUB</span><span>✦ LIMITED PIECES, NO RESTOCKS</span>
+        </div>
+      </div>
+    </div>
+
+    <nav class="nav" aria-label="Main">
+      <button class="nav__burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="menu">
+        <span></span><span></span>
+      </button>
+
+      <ul class="nav__links nav__links--left">
+        <li><a href="new-in.html" data-scramble>NEW IN</a></li>
+        <li><a href="shop.html" data-scramble>SHOP</a></li>
+        <li><a href="drops.html" data-scramble>DROPS</a></li>
+        <li><a href="lookbook.html" data-scramble>LOOKBOOK</a></li>
+      </ul>
+
+      <a href="index.html" class="nav__logo" aria-label="CYBERDOLL home">
+        <canvas id="navLogo" class="navlogo"></canvas>
+      </a>
+
+      <ul class="nav__links nav__links--right">
+        <li class="hide-sm"><a href="about.html" data-scramble>ABOUT</a></li>
+        <li class="hide-sm"><a href="search.html" data-scramble>SEARCH</a></li>
+        <li class="hide-sm"><a href="account.html" data-scramble>ACCOUNT</a></li>
+        <li><a href="wishlist.html" class="nav__wish" aria-label="Wishlist">
+          <svg viewBox="0 0 7 6" shape-rendering="crispEdges"><path d="M1 0h2v1h1V0h2v1h1v2H6v1H5v1H4v1H3V5H2V4H1V3H0V1h1z"/></svg>
+          <span id="wishCount">0</span>
+        </a></li>
+        <li><a href="cart.html" class="nav__bag">BAG [<span id="bagCount">0</span>]</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- mobile / overlay menu -->
+  <div class="menu" id="menu" aria-hidden="true">
+    <ul class="menu__list">
+      <li><a href="new-in.html"><small>01</small>NEW IN</a></li>
+      <li><a href="shop.html"><small>02</small>SHOP</a></li>
+      <li><a href="drops.html"><small>03</small>DROPS</a></li>
+      <li><a href="lookbook.html"><small>04</small>LOOKBOOK</a></li>
+      <li><a href="about.html"><small>05</small>ABOUT</a></li>
+      <li><a href="contact.html"><small>06</small>CONTACT</a></li>
+    </ul>
+    <div class="menu__foot">
+      <a href="account.html">ACCOUNT</a><a href="search.html">SEARCH</a><a href="wishlist.html">WISHLIST ♡</a>
+    </div>
+  </div>
+
+    <main id="main" class="hp">
+    <header class="hp-head">
+      <nav class="hp-tabs" aria-label="Help pages">
+        <a href="faq.html"><i>?</i>FAQ</a>
+        <a href="size-guide.html" aria-current="page"><i>↔</i>SIZE GUIDE</a>
+        <a href="shipping.html"><i>✈</i>SHIPPING</a>
+        <a href="returns.html"><i>↺</i>RETURNS</a>
+        <a href="contact.html"><i>✉</i>CONTACT</a>
+      </nav>
+      <div class="hp-head__in">
+        <p class="kicker">// HELP.EXE · 02 / 05</p>
+        <h1 class="hp-title" data-split>FIT CHECK</h1>
+        <p class="hp-lead">grab a soft tape measure. three numbers and we'll tell you your CYBERDOLL size.</p>
+        <div class="sz-unit" role="radiogroup" aria-label="Units">
+          <button type="button" role="radio" data-unit="cm" aria-checked="true">CM</button>
+          <button type="button" role="radio" data-unit="in" aria-checked="false">INCH</button>
+          <i aria-hidden="true"></i>
+        </div>
+      </div>
+    </header>
+
+    <!-- calculator + body -->
+    <section class="sz-calc">
+      <div class="sz-body" aria-hidden="true">
+        <svg viewBox="0 0 190 300" class="sz-body__svg">
+          <rect class="sz-body__doll" x="70" y="10" width="20" height="12" rx="3"/>
+          <path class="sz-body__doll" d="M68 22h24v10c0 8 26 10 30 24 4 16-2 28-6 40-4 14-12 22-12 32 0 12 12 22 14 40 1 12-2 22-6 28H48c-4-6-7-16-6-28 2-18 14-28 14-40 0-10-8-18-12-32-4-12-10-24-6-40 4-14 30-16 30-24z"/>
+          <path class="sz-body__seam" d="M80 34V196M58 60c8 6 36 6 44 0"/>
+          <rect class="sz-body__doll" x="77" y="196" width="6" height="74"/>
+          <path class="sz-body__doll" d="M46 270h68l-10 10H56z"/>
+          <g class="sz-line" data-m="bust"><line x1="36" y1="92" x2="124" y2="92"/><text x="132" y="95">bust</text></g>
+          <g class="sz-line" data-m="waist"><line x1="54" y1="128" x2="106" y2="128"/><text x="132" y="131">waist</text></g>
+          <g class="sz-line" data-m="hips"><line x1="40" y1="168" x2="120" y2="168"/><text x="132" y="171">hips</text></g>
+        </svg>
+        <p class="sz-body__tip" id="tip">measure over your underwear, tape snug but not tight ♡</p>
+      </div>
+
+      <form class="sz-form win win--static" id="szForm" novalidate>
+        <div class="win__bar"><span>find_my_size.exe</span><div class="win__btns"><i>_</i><i>×</i></div></div>
+        <div class="win__body">
+          <label class="sz-field" data-m="bust"><span>BUST</span><small>fullest part of your chest</small>
+            <span class="sz-num"><button type="button" data-step="-1" aria-label="Less">−</button><input type="number" id="mBust" inputmode="decimal" min="50" max="160" step="1" placeholder="—" /><em class="u">cm</em><button type="button" data-step="1" aria-label="More">+</button></span>
+          </label>
+          <label class="sz-field" data-m="waist"><span>WAIST</span><small>the narrowest part, above your belly button</small>
+            <span class="sz-num"><button type="button" data-step="-1" aria-label="Less">−</button><input type="number" id="mWaist" inputmode="decimal" min="40" max="150" step="1" placeholder="—" /><em class="u">cm</em><button type="button" data-step="1" aria-label="More">+</button></span>
+          </label>
+          <label class="sz-field" data-m="hips"><span>HIPS</span><small>widest part, feet together</small>
+            <span class="sz-num"><button type="button" data-step="-1" aria-label="Less">−</button><input type="number" id="mHips" inputmode="decimal" min="50" max="170" step="1" placeholder="—" /><em class="u">cm</em><button type="button" data-step="1" aria-label="More">+</button></span>
+          </label>
+
+          <div class="sz-result" id="szResult" aria-live="polite">
+            <div class="sz-result__scan" aria-hidden="true"></div>
+            <p class="sz-result__label">YOUR SIZE</p>
+            <p class="sz-result__size" id="szSize">?</p>
+            <p class="sz-result__note" id="szNote">fill in at least one number</p>
+          </div>
+          <button type="button" class="winbtn sz-save" id="szSave" hidden>SAVE TO MY DOLL ID ♡</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- tables -->
+    <section class="sz-tables">
+      <div class="sz-tabs" role="tablist" aria-label="Size charts">
+        <button type="button" role="tab" data-tab="clothes" aria-selected="true">CLOTHES</button>
+        <button type="button" role="tab" data-tab="shoes" aria-selected="false">SHOES</button>
+        <button type="button" role="tab" data-tab="acc" aria-selected="false">ACCESSORIES</button>
+      </div>
+
+      <div class="sz-panel" data-panel="clothes">
+        <table class="sz-table" id="tClothes">
+          <thead><tr><th>SIZE</th><th data-m="bust">BUST</th><th data-m="waist">WAIST</th><th data-m="hips">HIPS</th><th>IT / FR</th></tr></thead>
+          <tbody></tbody>
+        </table>
+        <p class="sz-foot">corsets are cut close: if you're between two sizes, <b>size up</b>. knits are oversized on purpose — take your usual size for the slouchy fit.</p>
+      </div>
+
+      <div class="sz-panel" data-panel="shoes" hidden>
+        <table class="sz-table" id="tShoes">
+          <thead><tr><th>EU</th><th>UK</th><th>US</th><th>FOOT LENGTH</th></tr></thead>
+          <tbody></tbody>
+        </table>
+        <div class="sz-foot sz-feet">
+          <label>your foot length <span class="sz-num sz-num--sm"><input type="number" id="mFoot" inputmode="decimal" step="0.1" placeholder="—" /><em class="u">cm</em></span></label>
+          <p id="footOut">stand on paper, mark heel + longest toe, measure the gap.</p>
+        </div>
+      </div>
+
+      <div class="sz-panel" data-panel="acc" hidden>
+        <ul class="sz-acc">
+          <li><b>RINGS</b><span>open-back, adjustable — squeeze to fit, fits most fingers.</span></li>
+          <li><b>BELTS</b><span>fit waists 64–96 cm / 25–38 in, with an extra hole punched for low-rise.</span></li>
+          <li><b>CHOKERS</b><span>32 cm + 8 cm extender chain.</span></li>
+          <li><b>BAGS &amp; EARRINGS</b><span>one size, obviously ♡</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <aside class="hp-still">
+      <p class="hp-still__big">still unsure?</p>
+      <p>send us your measurements and the piece you're eyeing — we'll tell you straight.</p>
+      <a href="contact.html" class="btn btn--dark mag"><span>ASK A FIT DOLL</span><i>→</i></a>
+    </aside>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="footer">
+    <div class="footer__top">
+      <div class="footer__col">
+        <h4>SHOP</h4>
+        <a href="new-in.html">New in</a><a href="shop.html">All products</a><a href="drops.html">Drops</a><a href="shop.html?cat=accessories">Accessories</a><a href="gift-cards.html">Gift cards</a>
+      </div>
+      <div class="footer__col">
+        <h4>HELP</h4>
+        <a href="shipping.html">Shipping</a><a href="returns.html">Returns</a><a href="size-guide.html">Size guide</a><a href="faq.html">FAQ</a><a href="contact.html">Contact</a>
+      </div>
+      <div class="footer__col">
+        <h4>DOLL WORLD</h4>
+        <a href="about.html">About</a><a href="lookbook.html">Lookbook</a><a href="journal.html">Journal</a><a href="stockists.html">Stockists</a>
+      </div>
+      <div class="footer__col">
+        <h4>SOCIAL</h4>
+        <a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a><a href="https://tiktok.com" target="_blank" rel="noopener">TikTok</a><a href="https://pinterest.com" target="_blank" rel="noopener">Pinterest</a>
+      </div>
+      <div class="footer__col footer__col--time">
+        <h4>TIME IN DOLLTOWN</h4>
+        <p class="footer__clock" data-clock-sec>00:00:00</p>
+        <a href="#top" class="link-arrow link-arrow--light" data-scramble>BACK TO TOP ↑</a>
+      </div>
+    </div>
+
+    <div class="footer__logo">
+      <canvas id="footLogo" class="dotlogo" aria-hidden="true"></canvas>
+    </div>
+
+    <div class="footer__bottom">
+      <span>© 2026 CYBERDOLL</span>
+      <span class="barcode" aria-hidden="true"></span>
+      <span><a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="cookies.html">Cookies</a></span>
+    </div>
+  </footer>
+
+  <script src="js/products.js?v=32"></script>
+  <script src="js/main.js?v=34"></script>
+  <script src="js/help.js?v=32"></script>
+  <script src="js/secrets.js?v=34"></script>
+</body>
+</html>
