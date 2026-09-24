@@ -1,0 +1,6 @@
+# macOS
+.DS_Store
+# local editor / preview settings
+.claude/
+# leftover folder from the first clone (the repo now lives in this folder)
+/CYBERDOLL/
