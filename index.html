@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CYBERDOLL — digital dolls, soft but lethal</title>
+  <meta name="description" content="CYBERDOLL — y2k cyber alt fashion for girls who glitch in public. New drop out now." />
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="img/favicon-32.png" sizes="32x32" type="image/png" />
+  <link rel="apple-touch-icon" href="img/apple-touch-icon.png" />
+  <meta name="theme-color" content="#0a0a0b" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Pinyon+Script&family=Playfair+Display:ital,wght@1,900&family=Silkscreen&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css?v=34" />
+</head>
+<body class="is-loading">
+
+  <!-- ================= LOADER ================= -->
+  <div class="loader" id="loader" aria-hidden="true">
+    <div class="loader__inner">
+      <div class="loader__term" id="loaderTerm"></div>
+      <div class="loader__bar"><span id="loaderBar"></span></div>
+      <div class="loader__foot">
+        <span>CYBERDOLL.EXE</span>
+        <span id="loaderPct">000%</span>
+      </div>
+      <p class="loader__skip">click to skip ♡</p>
+    </div>
+    <canvas class="loader__pix" id="loaderPix"></canvas>
+  </div>
+
+  <!-- global fx -->
+  <div class="grain" aria-hidden="true"></div>
+  <canvas class="trail" id="trail" aria-hidden="true"></canvas>
+  <div class="cursor" id="cursor" aria-hidden="true">
+    <svg class="cursor__heart" viewBox="0 0 7 6" shape-rendering="crispEdges"><path d="M1 0h2v1h1V0h2v1h1v2H6v1H5v1H4v1H3V5H2V4H1V3H0V1h1z"/></svg>
+    <span class="cursor__label" id="cursorLabel"></span>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <!-- ================= HEADER ================= -->
+  <header class="header" id="header">
+    <div class="ticker" aria-label="Announcements">
+      <div class="marquee" data-speed="0.6">
+        <div class="marquee__track">
+          <span>✦ FREE SHIPPING OVER €90</span><span>✦ DROP #005 MIDNIGHT MALL — OUT NOW</span><span>✦ WORLDWIDE DELIVERY</span><span>✦ NEW DOLLS GET 10% OFF — JOIN THE CLUB</span><span>✦ LIMITED PIECES, NO RESTOCKS</span>
+        </div>
+      </div>
+    </div>
+
+    <nav class="nav" aria-label="Main">
+      <button class="nav__burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="menu">
+        <span></span><span></span>
+      </button>
+
+      <ul class="nav__links nav__links--left">
+        <li><a href="new-in.html" data-scramble>NEW IN</a></li>
+        <li><a href="shop.html" data-scramble>SHOP</a></li>
+        <li><a href="drops.html" data-scramble>DROPS</a></li>
+        <li><a href="lookbook.html" data-scramble>LOOKBOOK</a></li>
+      </ul>
+
+      <a href="index.html" class="nav__logo" aria-label="CYBERDOLL home">
+        <canvas id="navLogo" class="navlogo"></canvas>
+      </a>
+
+      <ul class="nav__links nav__links--right">
+        <li class="hide-sm"><a href="about.html" data-scramble>ABOUT</a></li>
+        <li class="hide-sm"><a href="search.html" data-scramble>SEARCH</a></li>
+        <li class="hide-sm"><a href="account.html" data-scramble>ACCOUNT</a></li>
+        <li><a href="wishlist.html" class="nav__wish" aria-label="Wishlist">
+          <svg viewBox="0 0 7 6" shape-rendering="crispEdges"><path d="M1 0h2v1h1V0h2v1h1v2H6v1H5v1H4v1H3V5H2V4H1V3H0V1h1z"/></svg>
+          <span id="wishCount">0</span>
+        </a></li>
+        <li><a href="cart.html" class="nav__bag">BAG [<span id="bagCount">0</span>]</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- mobile / overlay menu -->
+  <div class="menu" id="menu" aria-hidden="true">
+    <ul class="menu__list">
+      <li><a href="new-in.html"><small>01</small>NEW IN</a></li>
+      <li><a href="shop.html"><small>02</small>SHOP</a></li>
+      <li><a href="drops.html"><small>03</small>DROPS</a></li>
+      <li><a href="lookbook.html"><small>04</small>LOOKBOOK</a></li>
+      <li><a href="about.html"><small>05</small>ABOUT</a></li>
+      <li><a href="contact.html"><small>06</small>CONTACT</a></li>
+    </ul>
+    <div class="menu__foot">
+      <a href="account.html">ACCOUNT</a><a href="search.html">SEARCH</a><a href="wishlist.html">WISHLIST ♡</a>
+    </div>
+  </div>
+
+  <main id="main">
+
+    <!-- ================= HERO ================= -->
+    <section class="hero" id="top">
+      <div class="hero__blobs" aria-hidden="true"><i></i><i></i><i></i></div>
+      <div class="hero__veil" aria-hidden="true"></div>
+
+      <h1 class="sr-only">CYBERDOLL</h1>
+      <div class="hero__logo">
+        <canvas id="heroLogo" class="dotlogo" aria-hidden="true"></canvas>
+      </div>
+
+      <!-- annotation frames -->
+      <div class="anno anno--1" aria-hidden="true"><img src="img/anno-01.jpg" alt="" /><span>0001: DIGITAL DARLING</span></div>
+      <div class="anno anno--2" aria-hidden="true"><img src="img/anno-02.jpg" alt="" /><span>0002: HANDLE W/ CARE</span></div>
+      <div class="anno anno--3" aria-hidden="true"><img src="img/anno-03.jpg" alt="" /><span>0003: SOFT BUT LETHAL</span></div>
+
+      <div class="hero__intro">
+        <p class="script">who are we?</p>
+        <p class="hero__text">CYBERDOLL makes clothes for girls who live half online and half in the club. Lace, leather, knit and chrome — cut for dolls who glitch in public.</p>
+        <div class="hero__ctas">
+          <a href="new-in.html" class="btn btn--light mag"><span>SHOP THE DROP</span><i>→</i></a>
+          <a href="lookbook.html" class="btn btn--ghost mag"><span>LOOKBOOK</span></a>
+        </div>
+      </div>
+
+      <div class="hero__meta">
+        <p>DROP <b>#005</b></p>
+        <p class="hero__meta-big" data-scramble-loop>MIDNIGHT MALL</p>
+        <p>SS'26 — ONLINE ONLY</p>
+      </div>
+
+      <div class="hero__scroll" aria-hidden="true">
+        <span>SCROLL</span>
+        <i></i>
+      </div>
+    </section>
+
+    <!-- ================= MARQUEE BANDS ================= -->
+    <section class="bands" aria-label="Brand slogans">
+      <div class="band band--red">
+        <div class="marquee" data-speed="1.4">
+          <div class="marquee__track">
+            <span>NOT A DOLL</span><em>✦</em><span>A SIGNAL</span><em>✦</em><span>GLITCH IN HEELS</span><em>✦</em><span>SOFT BUT LETHAL</span><em>✦</em><span>BUILT FOR THE AFTERPARTY</span><em>✦</em>
+          </div>
+        </div>
+      </div>
+      <div class="band band--black">
+        <div class="marquee" data-speed="-1" data-mono>
+          <div class="marquee__track">
+            <span>SOURCE CODE /</span><span>BLOWN AWAY /</span><span>KISS ME /</span><span>RIPPED AF /</span><span>VIP /</span><span>LOOKS CAN KILL /</span><span>WATCHLIST /</span><span>HAZARDOUS /</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= NEW DROP ================= -->
+    <section class="drop" id="drop">
+      <header class="drop__head">
+        <div>
+          <p class="kicker" data-reveal>// LAST DROP — 08 PIECES</p>
+          <h2 class="h-display" data-split>DROP #004:</h2>
+          <h2 class="h-display h-display--outline" data-split>ANGEL.EXE</h2>
+        </div>
+        <div class="drop__side" data-reveal>
+          <p class="script script--red">sp'26 collection</p>
+          <p class="drop__copy">Corsets that look like error messages, knits with skulls, jeans shredded like bad data. Made in small runs. When it's gone, it's gone.</p>
+          <a href="drops.html#drop-004" class="link-arrow" data-scramble>VIEW ALL PIECES →</a>
+        </div>
+      </header>
+
+      <div class="grid">
+        <!-- CARD 01 -->
+        <article class="card card--tall" data-reveal>
+          <a href="product.html?id=leather-error-corset" class="card__link">
+            <div class="media" data-ph="PRODUCT 01 · 4:5"><img src="img/drop-01.jpg" alt="Leather Error corset top" /></div>
+            <span class="card__tag">NEW</span>
+            <span class="card__code">0401</span>
+          </a>
+          <button class="card__heart" aria-label="Add to wishlist" aria-pressed="false"><svg viewBox="0 0 7 6" shape-rendering="crispEdges"><path d="M1 0h2v1h1V0h2v1h1v2H6v1H5v1H4v1H3V5H2V4H1V3H0V1h1z"/></svg></button>
+          <div class="card__info">
+            <h3><a href="product.html?id=leather-error-corset">Leather Error Corset Top</a></h3>
+            <span class="card__price">€68</span>
+          </div>
+          <button class="card__add" data-name="Leather Error Corset Top">+ ADD TO BAG</button>
+        </article>
+
+        <!-- CARD 02 -->
+        <article class="card card--offset" data-reveal>
+          <a href="product.html?id=ripped-af-jeans" class="card__link">
+            <div class="media" data-ph="PRODUCT 02 · 4:5"><img src="img/drop-02.jpg" alt="Ripped.AF low-rise jeans" /></div>
+            <span class="card__tag card__tag--red">LOW STOCK</span>
+            <span class="card__code">0402</span>
+          </a>
+          <button class="card__heart" aria-label="Add to wishlist" aria-pressed="false"><svg viewBox="0 0 7 6" shape-rendering="crispEdges"><path d="M1 0h2v1h1V0h2v1h1v2H6v1H5v1H4v1H3V5H2V4H1V3H0V1h1z"/></svg></button>
+          <div class="card__info">
+            <h3><a href="product.html?id=ripped-af-jeans">Ripped.AF Low-Rise Jeans</a></h3>
+            <span class="card__price">€94</span>
+          </div>
+          <button class="card__add" data-name="Ripped.AF Low-Rise Jeans">+ ADD TO BAG</button>
+        </article>
+
+        <!-- CARD 03 -->
+        <article class="card" data-reveal>
+          <a href="product.html?id=angel-wing-tee" class="card__link">
+            <div class="media" data-ph="PRODUCT 03 · 4:5"><img src="img/drop-03.jpg" alt="Angel Wing baby tee" /></div>
+            <span class="card__tag">NEW</span>
+            <span class="card__code">0403</span>
+          </a>
+          <button class="card__heart" aria-label="Add to wishlist" aria-pressed="false"><svg viewBox="0 0 7 6" shape-rendering="crispEdges"><path d="M1 0h2v1h1V0h2v1h1v2H6v1H5v1H4v1H3V5H2V4H1V3H0V1h1z"/></svg></button>
+          <div class="card__info">
+            <h3><a href="product.html?id=angel-wing-tee">Angel Wing Baby Tee</a></h3>
+            <span class="card__price">€39</span>
+          </div>
+          <button class="card__add" data-name="Angel Wing Baby Tee">+ ADD TO BAG</button>
+        </article>
+
+        <!-- CARD 04 -->
+        <article class="card card--tall card--offset" data-reveal>
+          <a href="product.html?id=skull-kiss-knit" class="card__link">
+            <div class="media" data-ph="PRODUCT 04 · 4:5"><img src="img/drop-04.jpg" alt="Skull Kiss oversized knit" /></div>
+            <span class="card__tag">BESTSELLER</span>
+            <span class="card__code">0404</span>
+          </a>
+          <button class="card__heart" aria-label="Add to wishlist" aria-pressed="false"><svg viewBox="0 0 7 6" shape-rendering="crispEdges"><path d="M1 0h2v1h1V0h2v1h1v2H6v1H5v1H4v1H3V5H2V4H1V3H0V1h1z"/></svg></button>
+          <div class="card__info">
+            <h3><a href="product.html?id=skull-kiss-knit">Skull Kiss Oversized Knit</a></h3>
+            <span class="card__price">€112</span>
+          </div>
+          <button class="card__add" data-name="Skull Kiss Oversized Knit">+ ADD TO BAG</button>
+        </article>
+
+        <!-- CARD 05 -->
+        <article class="card" data-reveal>
+          <a href="product.html?id=chrome-heart-skirt" class="card__link">
+            <div class="media" data-ph="PRODUCT 05 · 4:5"><img src="img/drop-05.jpg" alt="Chrome Heart mini skirt" /></div>
+            <span class="card__tag">NEW</span>
+            <span class="card__code">0405</span>
+          </a>
+          <button class="card__heart" aria-label="Add to wishlist" aria-pressed="false"><svg viewBox="0 0 7 6" shape-rendering="crispEdges"><path d="M1 0h2v1h1V0h2v1h1v2H6v1H5v1H4v1H3V5H2V4H1V3H0V1h1z"/></svg></button>
+          <div class="card__info">
+            <h3><a href="product.html?id=chrome-heart-skirt">Chrome Heart Mini Skirt</a></h3>
+            <span class="card__price">€72</span>
+          </div>
+          <button class="card__add" data-name="Chrome Heart Mini Skirt">+ ADD TO BAG</button>
+        </article>
+
+        <!-- CARD 06 -->
+        <article class="card card--tall card--offset" data-reveal>
+          <a href="product.html?id=midnight-fiction-slip" class="card__link">
+            <div class="media" data-ph="PRODUCT 06 · 4:5"><img src="img/drop-06.jpg" alt="Midnight Fiction slip dress" /></div>
+            <span class="card__tag">NEW</span>
+            <span class="card__code">0406</span>
+          </a>
+          <button class="card__heart" aria-label="Add to wishlist" aria-pressed="false"><svg viewBox="0 0 7 6" shape-rendering="crispEdges"><path d="M1 0h2v1h1V0h2v1h1v2H6v1H5v1H4v1H3V5H2V4H1V3H0V1h1z"/></svg></button>
+          <div class="card__info">
+            <h3><a href="product.html?id=midnight-fiction-slip">Midnight Fiction Slip Dress</a></h3>
+            <span class="card__price">€89</span>
+          </div>
+          <button class="card__add" data-name="Midnight Fiction Slip Dress">+ ADD TO BAG</button>
+        </article>
+
+        <!-- CARD 07 -->
+        <article class="card" data-reveal>
+          <a href="product.html?id=glitch-platform-boots" class="card__link">
+            <div class="media" data-ph="PRODUCT 07 · 4:5"><img src="img/drop-07.jpg" alt="Glitch platform boots" /></div>
+            <span class="card__tag card__tag--red">LAST 3</span>
+            <span class="card__code">0407</span>
+          </a>
+          <button class="card__heart" aria-label="Add to wishlist" aria-pressed="false"><svg viewBox="0 0 7 6" shape-rendering="crispEdges"><path d="M1 0h2v1h1V0h2v1h1v2H6v1H5v1H4v1H3V5H2V4H1V3H0V1h1z"/></svg></button>
+          <div class="card__info">
+            <h3><a href="product.html?id=glitch-platform-boots">Glitch Platform Boots</a></h3>
+            <span class="card__price">€159</span>
+          </div>
+          <button class="card__add" data-name="Glitch Platform Boots">+ ADD TO BAG</button>
+        </article>
+
+        <!-- CARD 08 -->
+        <article class="card card--offset" data-reveal>
+          <a href="product.html?id=bow-exe-warmers" class="card__link">
+            <div class="media" data-ph="PRODUCT 08 · 4:5"><img src="img/drop-08.jpg" alt="Bow.exe arm warmers" /></div>
+            <span class="card__tag">NEW</span>
+            <span class="card__code">0408</span>
+          </a>
+          <button class="card__heart" aria-label="Add to wishlist" aria-pressed="false"><svg viewBox="0 0 7 6" shape-rendering="crispEdges"><path d="M1 0h2v1h1V0h2v1h1v2H6v1H5v1H4v1H3V5H2V4H1V3H0V1h1z"/></svg></button>
+          <div class="card__info">
+            <h3><a href="product.html?id=bow-exe-warmers">Bow.exe Arm Warmers</a></h3>
+            <span class="card__price">€29</span>
+          </div>
+          <button class="card__add" data-name="Bow.exe Arm Warmers">+ ADD TO BAG</button>
+        </article>
+      </div>
+
+      <div class="drop__cta" data-reveal>
+        <a href="shop.html?drop=004" class="btn btn--dark mag"><span>SHOP DROP #004</span><i>→</i></a>
+      </div>
+    </section>
+
+    <!-- ================= ANATOMY (annotated look) ================= -->
+    <section class="anatomy" id="anatomy">
+      <div class="anatomy__text">
+        <p class="kicker" data-reveal>// SHOP THE LOOK</p>
+        <h2 class="h-display" data-split>ANATOMY</h2>
+        <h2 class="h-display" data-split>OF A DOLL</h2>
+        <p class="script script--red" data-reveal>hazardous</p>
+        <ol class="anatomy__list" id="anatomyList">
+          <li data-frame="0" data-img="img/anatomy-earrings.jpg" data-code="0005" data-tag="STAR GIRL" data-name="Rhinestone Star Earrings" data-price="€25"><a href="product.html?id=star-girl-earrings"><i class="athumb"><img src="img/anatomy-earrings.jpg" alt="" loading="lazy" /></i><span>0005</span>STAR GIRL — Rhinestone Star Earrings<b>€25</b></a></li>
+          <li data-frame="1" data-img="img/anatomy-top.jpg" data-code="0012" data-tag="HOLY STUDS" data-name="Studded Cross Top" data-price="€45"><a href="product.html?id=holy-studs-top"><i class="athumb"><img src="img/anatomy-top.jpg" alt="" loading="lazy" /></i><span>0012</span>HOLY STUDS — Studded Cross Top<b>€45</b></a></li>
+          <li data-frame="2" data-img="img/anatomy-jacket.jpg" data-code="0022" data-tag="FUR REAL" data-name="Faux Fur Leather Jacket" data-price="€189"><a href="product.html?id=fur-real-jacket"><i class="athumb"><img src="img/anatomy-jacket.jpg" alt="" loading="lazy" /></i><span>0022</span>FUR REAL — Faux Fur Leather Jacket<b>€189</b></a></li>
+          <li data-frame="3" data-img="img/anatomy-shorts.jpg" data-code="0038" data-tag="BUCKLE UP" data-name="Leather Belt Shorts" data-price="€69"><a href="product.html?id=buckle-up-shorts"><i class="athumb"><img src="img/anatomy-shorts.jpg" alt="" loading="lazy" /></i><span>0038</span>BUCKLE UP — Leather Belt Shorts<b>€69</b></a></li>
+          <li data-frame="4" data-img="img/anatomy-boots.jpg" data-code="0047" data-tag="STOMP" data-name="Buckle Wrap Boots" data-price="€149"><a href="product.html?id=stomp-buckle-boots"><i class="athumb"><img src="img/anatomy-boots.jpg" alt="" loading="lazy" /></i><span>0047</span>STOMP — Buckle Wrap Boots<b>€149</b></a></li>
+        </ol>
+        <a href="shop.html?drop=003" class="btn btn--dark mag"><span>SHOP FULL LOOK</span><i>→</i></a>
+      </div>
+
+      <div class="anatomy__stage" id="anatomyStage">
+        <div class="media anatomy__img" data-ph="LOOK · 2:3 full outfit"><img src="img/anatomy.jpg" alt="Full CYBERDOLL look: studded cross top, faux fur leather jacket, belted shorts and buckle boots" /></div>
+        <div class="anatomy__color" id="anatomyColor" aria-hidden="true"><img src="img/anatomy.jpg" alt="" /></div>
+        <a href="product.html?id=star-girl-earrings" class="frame" data-frame="0" style="--x:40%;--y:3.5%;--w:21%;--h:13.5%"><span>0005: STAR GIRL</span></a>
+        <a href="product.html?id=holy-studs-top" class="frame" data-frame="1" style="--x:33%;--y:19.5%;--w:26%;--h:14%"><span>0012: HOLY STUDS</span></a>
+        <a href="product.html?id=fur-real-jacket" class="frame" data-frame="2" style="--x:26.5%;--y:37.5%;--w:10%;--h:16%"><span>0022: FUR REAL</span></a>
+        <a href="product.html?id=buckle-up-shorts" class="frame" data-frame="3" style="--x:34.5%;--y:36.5%;--w:26%;--h:12.5%"><span>0038: BUCKLE UP</span></a>
+        <a href="product.html?id=stomp-buckle-boots" class="frame" data-frame="4" style="--x:35%;--y:63%;--w:36%;--h:34%"><span>0047: STOMP</span></a>
+        <a class="apop" id="apop" href="#" tabindex="-1" aria-hidden="true">
+          <span class="apop__bar"><span class="apop__code">0000.jpg</span><span class="apop__btns"><i>_</i><i>×</i></span></span>
+          <span class="apop__img"><img alt="" /></span>
+          <span class="apop__info"><b class="apop__name"></b><span class="apop__price"></span></span>
+          <span class="apop__cta">VIEW PIECE ♡ →</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- ================= CATEGORIES ================= -->
+    <section class="cats" id="cats">
+      <header class="cats__head">
+        <p class="kicker" data-reveal>// SHOP BY OBSESSION</p>
+        <p class="script" data-reveal>pick your poison</p>
+      </header>
+      <ul class="cats__list" id="catsList">
+        <li><a href="shop.html?cat=tops" data-cat="0" data-cat-id="tops"><small>01</small><span class="cats__name" data-text="TOPS">TOPS</span><em>(–)</em></a></li>
+        <li><a href="shop.html?cat=corsets" data-cat="1" data-cat-id="corsets"><small>02</small><span class="cats__name" data-text="CORSETS">CORSETS</span><em>(–)</em></a></li>
+        <li><a href="shop.html?cat=bottoms" data-cat="2" data-cat-id="bottoms"><small>03</small><span class="cats__name" data-text="BOTTOMS">BOTTOMS</span><em>(–)</em></a></li>
+        <li><a href="shop.html?cat=dresses" data-cat="3" data-cat-id="dresses"><small>04</small><span class="cats__name" data-text="DRESSES">DRESSES</span><em>(–)</em></a></li>
+        <li><a href="shop.html?cat=knitwear" data-cat="4" data-cat-id="knitwear"><small>05</small><span class="cats__name" data-text="KNITWEAR">KNITWEAR</span><em>(–)</em></a></li>
+        <li><a href="shop.html?cat=outerwear" data-cat="5" data-cat-id="outerwear"><small>06</small><span class="cats__name" data-text="OUTERWEAR">OUTERWEAR</span><em>(–)</em></a></li>
+        <li><a href="shop.html?cat=shoes" data-cat="6" data-cat-id="shoes"><small>07</small><span class="cats__name" data-text="SHOES">SHOES</span><em>(–)</em></a></li>
+        <li><a href="shop.html?cat=accessories" data-cat="7" data-cat-id="accessories"><small>08</small><span class="cats__name" data-text="ACCESSORIES">ACCESSORIES</span><em>(–)</em></a></li>
+      </ul>
+      <div class="cats__preview" id="catsPreview" aria-hidden="true">
+        <div class="media" data-ph="TOPS · 4:5"><img src="img/tops/top-13.jpg" alt="" loading="lazy" /></div>
+        <div class="media" data-ph="CORSETS · 4:5"><img src="img/corset/corset-08.jpg" alt="" loading="lazy" /></div>
+        <div class="media" data-ph="BOTTOMS · 4:5"><img src="img/bottoms/bottom-07.jpg" alt="" loading="lazy" /></div>
+        <div class="media" data-ph="DRESSES · 4:5"><img src="img/dresses/dress-09.jpg" alt="" loading="lazy" /></div>
+        <div class="media" data-ph="KNITWEAR · 4:5"><img src="img/knitwear/knit-06.jpg" alt="" loading="lazy" /></div>
+        <div class="media" data-ph="OUTERWEAR · 4:5"><img src="img/outwear/outwear-03.jpg" alt="" loading="lazy" /></div>
+        <div class="media" data-ph="SHOES · 4:5"><img src="img/shoes/shoes-03.jpg" alt="" loading="lazy" /></div>
+        <div class="media" data-ph="ACCESSORIES · 4:5"><img src="img/accessories/acc-05.jpg" alt="" loading="lazy" /></div>
+      </div>
+    </section>
+
+    <!-- ================= LOOKBOOK (horizontal) ================= -->
+    <section class="lookbook" id="lookbook">
+      <div class="lookbook__sticky">
+        <div class="lookbook__bg" aria-hidden="true">
+          <span class="script lookbook__script">Midnight Fiction</span>
+        </div>
+        <div class="lookbook__top">
+          <p class="kicker kicker--light">// LOOKBOOK SS'26</p>
+          <p class="lookbook__count"><span id="lbIndex">01</span> / 06</p>
+        </div>
+        <div class="lookbook__track" id="lbTrack">
+          <div class="lb-intro">
+            <h2 class="h-display h-display--light">LOOK<br />BOOK</h2>
+            <p class="lb-intro__text">Six looks shot after midnight. Flash on, feelings off. Scroll to walk through.</p>
+            <a href="lookbook.html" class="link-arrow link-arrow--light" data-scramble>FULL LOOKBOOK →</a>
+          </div>
+          <a href="lookbook.html#look-01" class="lb-item lb-item--a"><div class="media" data-ph="LOOK 01 · 3:4"><img src="img/look-01.jpg" alt="Look 01: polka-dot mesh, silver belt, platform buckle boots" /></div><span>LOOK 01 — ANGELIC HEART</span></a>
+          <a href="lookbook.html#look-02" class="lb-item lb-item--d"><div class="media" data-ph="LOOK 02 · 9:16"><img src="img/look-02.jpg" alt="Look 02: studded cap, leather corset, studded belts" /></div><span>LOOK 02 — SPIKED</span></a>
+          <a href="lookbook.html#look-03" class="lb-item lb-item--b"><div class="media" data-ph="LOOK 03 · 4:5"><img src="img/look-03.jpg" alt="Look 03: studded cross top, camo cap, fishnets" /></div><span>LOOK 03 — LOOKS CAN KILL</span></a>
+          <a href="lookbook.html#look-04" class="lb-item lb-item--c"><div class="media" data-ph="LOOK 04 · 2:3"><img src="img/look-04.jpg" alt="Look 04: cropped leather jacket, washed wide-leg denim" /></div><span>LOOK 04 — SOURCE CODE</span></a>
+          <a href="lookbook.html#look-05" class="lb-item lb-item--d"><div class="media" data-ph="LOOK 05 · 9:16"><img src="img/look-05.jpg" alt="Look 05: fur hood, belted shorts, leg warmers" /></div><span>LOOK 05 — MIND THE GAP</span></a>
+          <a href="lookbook.html#look-06" class="lb-item lb-item--a"><div class="media" data-ph="LOOK 06 · 3:4"><img src="img/look-06.jpg" alt="Look 06: camo top, fur-trim jacket, leather shorts" /></div><span>LOOK 06 — BLOWN AWAY</span></a>
+          <div class="lb-end">
+            <a href="lookbook.html" class="lb-end__link"><span>SEE<br />EVERYTHING</span><i>→</i></a>
+          </div>
+        </div>
+        <div class="lookbook__progress"><span id="lbBar"></span></div>
+      </div>
+    </section>
+
+    <!-- ================= MANIFESTO ================= -->
+    <section class="manifesto" id="manifesto">
+      <div class="manifesto__sticky">
+        <p class="kicker">// MANIFESTO.TXT</p>
+        <p class="manifesto__text" id="manifestoText">
+          SOFT ON THE OUTSIDE. <em>corrupted</em> ON THE INSIDE. WE DRESS GIRLS WHO <mark>GLITCH IN PUBLIC,</mark> CRY IN THE CLUB BATHROOM AND LOOK <em>perfect</em> DOING IT. PRETTY IS A WEAPON. <mark>WE JUST MADE IT WEARABLE.</mark>
+        </p>
+        <a href="about.html" class="link-arrow" data-scramble>READ OUR STORY →</a>
+        <svg class="sticker sticker--1" viewBox="0 0 7 6" shape-rendering="crispEdges" aria-hidden="true"><path d="M1 0h2v1h1V0h2v1h1v2H6v1H5v1H4v1H3V5H2V4H1V3H0V1h1z"/></svg>
+        <svg class="sticker sticker--2" viewBox="0 0 5 5" shape-rendering="crispEdges" aria-hidden="true"><path d="M2 0h1v2h2v1H3v2H2V3H0V2h2z"/></svg>
+        <svg class="sticker sticker--3" viewBox="0 0 5 5" shape-rendering="crispEdges" aria-hidden="true"><path d="M2 0h1v2h2v1H3v2H2V3H0V2h2z"/></svg>
+        <svg class="sticker sticker--4" viewBox="0 0 7 6" shape-rendering="crispEdges" aria-hidden="true"><path d="M1 0h2v1h1V0h2v1h1v2H6v1H5v1H4v1H3V5H2V4H1V3H0V1h1z"/></svg>
+      </div>
+    </section>
+
+    <!-- ================= DOLL CLUB DESKTOP ================= -->
+    <section class="desk" id="club">
+      <div class="desk__screen" id="desk">
+        <div class="desk__icons">
+          <a href="shop.html" class="dicon"><span class="dicon__img dicon__img--folder"></span>my_dolls</a>
+          <a href="wishlist.html" class="dicon"><span class="dicon__img dicon__img--heart"></span>wishlist.lnk</a>
+          <a href="lookbook.html" class="dicon"><span class="dicon__img dicon__img--cam"></span>lookbook</a>
+          <a href="contact.html" class="dicon"><span class="dicon__img dicon__img--mail"></span>contact.txt</a>
+        </div>
+
+        <h2 class="desk__title" aria-label="Doll club">
+          <span class="script">join the</span>
+          <span class="desk__pixel">DOLL<br />CLUB</span>
+        </h2>
+
+        <!-- window: newsletter -->
+        <div class="win win--club" style="--wx:66%;--wy:7%">
+          <div class="win__bar"><span>doll_club.exe</span><div class="win__btns"><i>_</i><i>□</i><i>×</i></div></div>
+          <div class="win__body">
+            <p class="win__big">GET ON THE LIST ♡</p>
+            <p>Early access to drops, secret restocks and <b>10% off</b> your first order.</p>
+            <form class="club-form" id="clubForm" novalidate>
+              <label class="sr-only" for="clubEmail">Email</label>
+              <input id="clubEmail" type="email" placeholder="your@email.com" required autocomplete="email" />
+              <button type="submit" class="winbtn">JOIN ♡</button>
+            </form>
+            <p class="club-form__msg" id="clubMsg" role="status"></p>
+            <div class="win__progress"><span></span></div>
+          </div>
+        </div>
+
+        <!-- window: selfie -->
+        <div class="win win--pic" style="--wx:13%;--wy:44%">
+          <div class="win__bar"><span>selfie_FINAL_final2.jpg</span><div class="win__btns"><i>_</i><i>□</i><i>×</i></div></div>
+          <div class="win__body win__body--flush">
+            <div class="media" data-ph="CLUB · 1:1"><img src="img/club.jpg" alt="" /></div>
+          </div>
+        </div>
+
+        <!-- window: now playing -->
+        <div class="win win--music" style="--wx:68%;--wy:66%">
+          <div class="win__bar"><span>now_playing.mp3</span><div class="win__btns"><i>_</i><i>□</i><i>×</i></div></div>
+          <div class="win__body">
+            <div class="player">
+              <div class="player__eq" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+              <div class="player__title"><div class="marquee" data-speed="0.5"><div class="marquee__track"><span class="player__song">♫ cyberdoll radio — press play ♡</span></div></div></div>
+            </div>
+            <div class="player__ctrl"><button type="button" class="player__btn" id="plPrev" aria-label="Previous track">◀◀</button><button type="button" class="player__btn player__btn--play" id="plPlay" aria-label="Play">▶</button><button type="button" class="player__btn" id="plNext" aria-label="Next track">▶▶</button><span class="player__time" id="plTime">00:00</span><label class="player__vol" title="Volume"><span aria-hidden="true">♪</span><input type="range" id="plVol" min="0" max="100" value="70" aria-label="Volume" /></label></div>
+          </div>
+        </div>
+
+        <!-- window: error (spawns more) -->
+        <div class="win win--error" id="errWin" style="--wx:14%;--wy:8%">
+          <div class="win__bar win__bar--red"><span>error.exe</span><div class="win__btns"><i>×</i></div></div>
+          <div class="win__body win__err">
+            <span class="win__icon">!</span>
+            <p>Warning: you are too cute to continue.</p>
+            <div class="win__actions"><button class="winbtn" data-err-ok>OK</button><button class="winbtn" data-err-ok>OK ♡</button></div>
+          </div>
+        </div>
+
+        <div class="taskbar">
+          <a href="shop.html" class="taskbar__start">♡ start</a>
+          <span class="taskbar__items"><i>doll_club.exe</i><i>now_playing.mp3</i></span>
+          <span class="taskbar__clock" data-clock>00:00</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= INSTAGRAM ================= -->
+    <section class="ig" id="ig">
+      <header class="ig__head">
+        <h2 class="h-display" data-split>@CYBERDOLL</h2>
+        <p class="ig__sub" data-reveal>tag us to get featured on the wall ♡ <a href="https://instagram.com" target="_blank" rel="noopener" class="link-arrow" data-scramble>FOLLOW →</a></p>
+      </header>
+      <div class="ig__grid">
+        <a href="https://instagram.com" target="_blank" rel="noopener" class="ig__item" data-reveal><div class="media" data-ph="IG 01 · 1:1"><img src="img/ig-01.jpg" alt="" /></div><span>♡ 2.4k</span></a>
+        <a href="https://instagram.com" target="_blank" rel="noopener" class="ig__item" data-reveal><div class="media" data-ph="IG 02 · 1:1"><img src="img/ig-02.jpg" alt="" /></div><span>♡ 1.8k</span></a>
+        <a href="https://instagram.com" target="_blank" rel="noopener" class="ig__item" data-reveal><div class="media" data-ph="IG 03 · 1:1"><img src="img/ig-03.jpg" alt="" /></div><span>♡ 3.1k</span></a>
+        <a href="https://instagram.com" target="_blank" rel="noopener" class="ig__item" data-reveal><div class="media" data-ph="IG 04 · 1:1"><img src="img/ig-04.jpg" alt="" /></div><span>♡ 988</span></a>
+        <a href="https://instagram.com" target="_blank" rel="noopener" class="ig__item" data-reveal><div class="media" data-ph="IG 05 · 1:1"><img src="img/ig-05.jpg" alt="" /></div><span>♡ 5.2k</span></a>
+        <a href="https://instagram.com" target="_blank" rel="noopener" class="ig__item" data-reveal><div class="media" data-ph="IG 06 · 1:1"><img src="img/ig-06.jpg" alt="" /></div><span>♡ 1.2k</span></a>
+      </div>
+    </section>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="footer">
+    <div class="footer__top">
+      <div class="footer__col">
+        <h4>SHOP</h4>
+        <a href="new-in.html">New in</a><a href="shop.html">All products</a><a href="drops.html">Drops</a><a href="shop.html?cat=accessories">Accessories</a><a href="gift-cards.html">Gift cards</a>
+      </div>
+      <div class="footer__col">
+        <h4>HELP</h4>
+        <a href="shipping.html">Shipping</a><a href="returns.html">Returns</a><a href="size-guide.html">Size guide</a><a href="faq.html">FAQ</a><a href="contact.html">Contact</a>
+      </div>
+      <div class="footer__col">
+        <h4>DOLL WORLD</h4>
+        <a href="about.html">About</a><a href="lookbook.html">Lookbook</a><a href="journal.html">Journal</a><a href="stockists.html">Stockists</a>
+      </div>
+      <div class="footer__col">
+        <h4>SOCIAL</h4>
+        <a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a><a href="https://tiktok.com" target="_blank" rel="noopener">TikTok</a><a href="https://pinterest.com" target="_blank" rel="noopener">Pinterest</a>
+      </div>
+      <div class="footer__col footer__col--time">
+        <h4>TIME IN DOLLTOWN</h4>
+        <p class="footer__clock" data-clock-sec>00:00:00</p>
+        <a href="#top" class="link-arrow link-arrow--light" data-scramble>BACK TO TOP ↑</a>
+      </div>
+    </div>
+
+    <div class="footer__logo">
+      <canvas id="footLogo" class="dotlogo" aria-hidden="true"></canvas>
+    </div>
+
+    <div class="footer__bottom">
+      <span>© 2026 CYBERDOLL</span>
+      <span class="barcode" aria-hidden="true"></span>
+      <span><a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="cookies.html">Cookies</a></span>
+    </div>
+  </footer>
+
+  <script src="js/products.js?v=32"></script>
+  <script src="js/main.js?v=34"></script>
+  <script src="js/radio.js?v=34"></script>
+  <script src="js/secrets.js?v=34"></script>
+</body>
+</html>
