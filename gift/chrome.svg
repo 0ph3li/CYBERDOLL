@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500" shape-rendering="geometricPrecision">
+<defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset=".45" stop-color="#a9a6a2"/><stop offset=".5" stop-color="#5b5a5e"/><stop offset=".56" stop-color="#d9d7d3"/><stop offset="1" stop-color="#8e8c90"/></linearGradient></defs>
+<rect width="400" height="500" fill="#ff5ea8"/>
+<g transform="rotate(-8 200 250)">
+<rect x="50" y="160" width="300" height="190" rx="16" fill="#0a0a0b" transform="translate(10 10)"/>
+<rect x="50" y="160" width="300" height="190" rx="16" fill="url(#g)" stroke="#0a0a0b" stroke-width="4"/>
+<text x="74" y="206" font-family="Georgia, serif" font-style="italic" font-weight="900" font-size="34" fill="#0a0a0b">CyberDoll</text>
+<text x="74" y="232" font-family="monospace" font-size="13" letter-spacing="3" fill="#0a0a0b">GIFT CARD</text>
+<rect x="74" y="262" width="44" height="32" rx="5" fill="#ffe36e" stroke="#0a0a0b" stroke-width="2"/>
+<path d="M74 278h44M96 262v32" stroke="#0a0a0b" stroke-width="1.5"/>
+<g transform="translate(288 290) scale(6)" shape-rendering="crispEdges"><path d="M1 0h2v1h1V0h2v1h1v2H6v1H5v1H4v1H3V5H2V4H1V3H0V1h1z" fill="#0a0a0b"/></g>
+</g>
+</svg>
