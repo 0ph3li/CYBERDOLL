@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ACCOUNT — DOLL HQ — CYBERDOLL</title>
+  <meta name="description" content="Your CYBERDOLL account: Doll ID, wishlist, bag, points and settings." />
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="img/favicon-32.png" sizes="32x32" type="image/png" />
+  <link rel="apple-touch-icon" href="img/apple-touch-icon.png" />
+  <meta name="theme-color" content="#0a0a0b" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Pinyon+Script&family=Playfair+Display:ital,wght@1,900&family=Silkscreen&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css?v=34" />
+  <link rel="stylesheet" href="css/shop.css?v=32" />
+  <link rel="stylesheet" href="css/account.css?v=34" />
+</head>
+<body class="page-account">
+
+  <!-- global fx -->
+  <div class="grain" aria-hidden="true"></div>
+  <canvas class="trail" id="trail" aria-hidden="true"></canvas>
+  <div class="cursor" id="cursor" aria-hidden="true">
+    <svg class="cursor__heart" viewBox="0 0 7 6" shape-rendering="crispEdges"><path d="M1 0h2v1h1V0h2v1h1v2H6v1H5v1H4v1H3V5H2V4H1V3H0V1h1z"/></svg>
+    <span class="cursor__label" id="cursorLabel"></span>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <!-- ================= HEADER ================= -->
+  <header class="header" id="header">
+    <div class="ticker" aria-label="Announcements">
+      <div class="marquee" data-speed="0.6">
+        <div class="marquee__track">
+          <span>✦ FREE SHIPPING OVER €90</span><span>✦ DROP #005 MIDNIGHT MALL — OUT NOW</span><span>✦ WORLDWIDE DELIVERY</span><span>✦ NEW DOLLS GET 10% OFF — JOIN THE CLUB</span><span>✦ LIMITED PIECES, NO RESTOCKS</span>
+        </div>
+      </div>
+    </div>
+
+    <nav class="nav" aria-label="Main">
+      <button class="nav__burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="menu">
+        <span></span><span></span>
+      </button>
+
+      <ul class="nav__links nav__links--left">
+        <li><a href="new-in.html" data-scramble>NEW IN</a></li>
+        <li><a href="shop.html" data-scramble>SHOP</a></li>
+        <li><a href="drops.html" data-scramble>DROPS</a></li>
+        <li><a href="lookbook.html" data-scramble>LOOKBOOK</a></li>
+      </ul>
+
+      <a href="index.html" class="nav__logo" aria-label="CYBERDOLL home">
+        <canvas id="navLogo" class="navlogo"></canvas>
+      </a>
+
+      <ul class="nav__links nav__links--right">
+        <li class="hide-sm"><a href="about.html" data-scramble>ABOUT</a></li>
+        <li class="hide-sm"><a href="search.html" data-scramble>SEARCH</a></li>
+        <li class="hide-sm"><a href="account.html" data-scramble aria-current="page">ACCOUNT</a></li>
+        <li><a href="wishlist.html" class="nav__wish" aria-label="Wishlist">
+          <svg viewBox="0 0 7 6" shape-rendering="crispEdges"><path d="M1 0h2v1h1V0h2v1h1v2H6v1H5v1H4v1H3V5H2V4H1V3H0V1h1z"/></svg>
+          <span id="wishCount">0</span>
+        </a></li>
+        <li><a href="cart.html" class="nav__bag">BAG [<span id="bagCount">0</span>]</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- mobile / overlay menu -->
+  <div class="menu" id="menu" aria-hidden="true">
+    <ul class="menu__list">
+      <li><a href="new-in.html"><small>01</small>NEW IN</a></li>
+      <li><a href="shop.html"><small>02</small>SHOP</a></li>
+      <li><a href="drops.html"><small>03</small>DROPS</a></li>
+      <li><a href="lookbook.html"><small>04</small>LOOKBOOK</a></li>
+      <li><a href="about.html"><small>05</small>ABOUT</a></li>
+      <li><a href="contact.html"><small>06</small>CONTACT</a></li>
+    </ul>
+    <div class="menu__foot">
+      <a href="account.html" aria-current="page">ACCOUNT</a><a href="search.html">SEARCH</a><a href="wishlist.html">WISHLIST ♡</a>
+    </div>
+  </div>
+
+    <main id="main" class="ac">
+
+    <!-- ================= LOGGED OUT: CRT + login.exe ================= -->
+    <section class="ac-login" id="login" hidden>
+      <div class="ac-crt">
+        <div class="ac-crt__screen">
+          <div class="ac-boot" id="boot" aria-hidden="true"></div>
+
+          <form class="ac-loginwin" id="loginForm" novalidate>
+            <div class="win__bar"><span>login.exe</span><div class="win__btns"><i>_</i><i>□</i><i>×</i></div></div>
+            <div class="ac-loginwin__body">
+              <p class="ac-loginwin__title">WHO ARE YOU, DOLL?</p>
+              <label class="ac-field">
+                <span>NICKNAME</span>
+                <input id="lgName" type="text" maxlength="18" autocomplete="nickname" placeholder="xX_doll_Xx" required />
+              </label>
+              <label class="ac-field">
+                <span>EMAIL</span>
+                <input id="lgEmail" type="email" autocomplete="email" placeholder="you@email.com" required />
+              </label>
+              <label class="ac-check">
+                <input id="lgNews" type="checkbox" />
+                <i aria-hidden="true"></i>
+                <span>send me drops early + 10% off ♡</span>
+              </label>
+              <p class="ac-loginwin__msg" id="lgMsg" role="status"></p>
+              <button type="submit" class="winbtn ac-print">LOG IN / PRINT MY DOLL ID ♡</button>
+              <p class="ac-note">already have a Doll ID? use the same email and your bag + wishlist come back. demo account — it lives only in this browser, no password, nothing gets sent anywhere.</p>
+            </div>
+          </form>
+        </div>
+        <div class="ac-crt__base" aria-hidden="true"><span>CYBERDOLL OS</span><i></i></div>
+      </div>
+    </section>
+
+    <!-- ================= LOGGED IN: DOLL HQ ================= -->
+    <div class="ac-fx" id="fx" aria-hidden="true"></div>
+    <section class="ac-hq" id="hq" hidden>
+      <header class="ac-hq__head">
+        <div>
+          <p class="kicker">// DOLL HQ — <span id="hqDate"></span></p>
+          <div class="ac-hq__me">
+            <button type="button" class="ac-pfp ac-hq__pfp" id="hqPfp" data-go="customize" aria-label="Change your profile picture"></button>
+            <div>
+              <h1 class="ac-hq__hi"><span class="ac-hq__small">hi,</span> <span id="hqName" class="ac-hq__name">DOLL</span></h1>
+              <p class="ac-hq__mood" id="hqMood" hidden></p>
+            </div>
+          </div>
+        </div>
+        <button type="button" class="winbtn" id="signOut">SIGN OUT ⏻</button>
+      </header>
+
+      <div class="ac-hq__top">
+        <!-- holographic member card -->
+        <div class="ac-cardwrap">
+          <div class="ac-slot" aria-hidden="true"></div>
+          <div class="ac-card" id="card" tabindex="0" aria-label="Your Doll ID card">
+            <div class="ac-card__holo" aria-hidden="true"></div>
+            <div class="ac-card__top">
+              <span class="ac-card__brand">CYBERDOLL</span>
+              <span class="ac-card__type">DOLL ID</span>
+            </div>
+            <div class="ac-card__mid">
+              <div class="ac-card__avatar" id="cardAvatar"></div>
+              <div>
+                <p class="ac-card__label">NAME</p>
+                <p class="ac-card__name" id="cardName">—</p>
+                <p class="ac-card__label">MEMBER NO.</p>
+                <p class="ac-card__no" id="cardNo">—</p>
+              </div>
+            </div>
+            <div class="ac-card__bottom">
+              <span class="ac-card__tier" id="cardTier">BABY DOLL</span>
+              <span class="ac-card__since">SINCE <b id="cardSince">—</b></span>
+              <span class="ac-card__chip" aria-hidden="true"></span>
+            </div>
+            <span class="ac-card__barcode" aria-hidden="true"></span>
+          </div>
+        </div>
+
+        <!-- stats -->
+        <div class="ac-stats">
+          <div class="ac-stat ac-stat--points">
+            <p class="ac-stat__label">DOLL POINTS</p>
+            <p class="ac-stat__big" id="statPoints">0</p>
+            <div class="ac-bar"><span id="tierBar"></span></div>
+            <p class="ac-stat__sub" id="tierNext">—</p>
+          </div>
+          <button type="button" class="ac-stat" data-go="wishlist">
+            <p class="ac-stat__label">WISHLIST</p>
+            <p class="ac-stat__big" id="statWish">0</p>
+            <p class="ac-stat__sub">pieces saved ♡</p>
+          </button>
+          <button type="button" class="ac-stat" data-go="bag">
+            <p class="ac-stat__label">IN YOUR BAG</p>
+            <p class="ac-stat__big" id="statBag">0</p>
+            <p class="ac-stat__sub">ready to go</p>
+          </button>
+        </div>
+      </div>
+
+      <!-- tabs -->
+      <div class="ac-tabs" role="tablist" aria-label="Account sections">
+        <button type="button" role="tab" data-tab="wishlist" aria-selected="true">♡ WISHLIST</button>
+        <button type="button" role="tab" data-tab="bag" aria-selected="false">⌂ BAG</button>
+        <button type="button" role="tab" data-tab="orders" aria-selected="false">▤ ORDERS</button>
+        <button type="button" role="tab" data-tab="points" aria-selected="false">✦ POINTS</button>
+        <button type="button" role="tab" data-tab="customize" aria-selected="false">✎ CUSTOMIZE</button>
+        <button type="button" role="tab" data-tab="settings" aria-selected="false">⚙ SETTINGS</button>
+      </div>
+
+      <div class="ac-panels">
+        <div class="ac-panel" data-panel="wishlist" role="tabpanel">
+          <div class="shop-grid ac-grid" id="wishGrid"></div>
+          <div class="ac-empty" id="wishEmpty" hidden>
+            <p class="ac-empty__big">your wishlist is empty ♡</p>
+            <p>tap the little heart on any piece to save it here.</p>
+            <a href="shop.html" class="btn btn--dark mag"><span>FIND SOMETHING</span><i>→</i></a>
+          </div>
+        </div>
+
+        <div class="ac-panel" data-panel="bag" role="tabpanel" hidden>
+          <ul class="ac-bag" id="bagList"></ul>
+          <div class="ac-bag__foot" id="bagFoot">
+            <p>SUBTOTAL <b id="bagTotal">€0</b></p>
+            <a href="cart.html" class="btn btn--dark mag"><span>GO TO BAG</span><i>→</i></a>
+          </div>
+          <div class="ac-empty" id="bagEmpty" hidden>
+            <p class="ac-empty__big">nothing in the bag yet</p>
+            <p>the good stuff sells out fast. just saying.</p>
+            <a href="new-in.html" class="btn btn--dark mag"><span>SHOP NEW IN</span><i>→</i></a>
+          </div>
+        </div>
+
+        <div class="ac-panel" data-panel="orders" role="tabpanel" hidden>
+          <div class="win win--static ac-orders">
+            <div class="win__bar"><span>orders.exe</span><div class="win__btns"><i>×</i></div></div>
+            <div class="win__body win__err">
+              <span class="win__icon">i</span>
+              <p>No orders yet. Once checkout is live, every order you place will show up here with its tracking.</p>
+              <div class="win__actions"><a class="winbtn" href="shop.html">GO SHOPPING ♡</a></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ac-panel" data-panel="points" role="tabpanel" hidden>
+          <ol class="ac-tiers" id="tiers"></ol>
+          <h3 class="ac-h3">HOW TO EARN</h3>
+          <ul class="ac-earn" id="earn"></ul>
+        </div>
+
+        <div class="ac-panel" data-panel="customize" role="tabpanel" hidden>
+          <div class="ac-cz" id="cz">
+            <section class="ac-cz__box ac-cz__box--pic">
+              <h3 class="ac-cz__title"><i>01</i> PROFILE PIC</h3>
+              <div class="ac-cz__now">
+                <div class="ac-pfp ac-pfp--big" id="pfpBig"></div>
+                <div class="ac-cz__nowtxt">
+                  <p>your pic shows up on your Doll ID, on the <a href="about.html#comments">about page comment wall</a> and in CYBERDOLL's friend space.</p>
+                  <div class="ac-cz__btns">
+                    <label class="winbtn ac-upload">⇪ UPLOAD PHOTO<input type="file" id="pfpFile" accept="image/png, image/jpeg, image/webp, image/gif" /></label>
+                    <button type="button" class="winbtn" id="pfpEdit" hidden>✎ RE-CROP</button>
+                    <button type="button" class="ac-link" id="pfpRemove" hidden>remove photo</button>
+                  </div>
+                </div>
+              </div>
+              <p class="ac-cz__label">OR BE A PIXEL DOLL</p>
+              <div class="ac-avatars" id="avatars" role="radiogroup" aria-label="Pixel avatar"></div>
+              <p class="ac-cz__label">FRAME</p>
+              <div class="ac-opts" id="frames" role="radiogroup" aria-label="Picture frame"></div>
+            </section>
+
+            <section class="ac-cz__box">
+              <h3 class="ac-cz__title"><i>02</i> BACKGROUND</h3>
+              <div class="ac-themes" id="themes" role="radiogroup" aria-label="Background"></div>
+            </section>
+
+            <section class="ac-cz__box">
+              <h3 class="ac-cz__title"><i>03</i> ANIMATION</h3>
+              <div class="ac-opts" id="effects" role="radiogroup" aria-label="Background animation"></div>
+            </section>
+
+            <section class="ac-cz__box">
+              <h3 class="ac-cz__title"><i>04</i> ACCENT</h3>
+              <div class="ac-accents" id="accents" role="radiogroup" aria-label="Accent colour"></div>
+            </section>
+
+            <section class="ac-cz__box">
+              <h3 class="ac-cz__title"><i>05</i> MOOD</h3>
+              <div class="ac-opts" id="moods" role="radiogroup" aria-label="Mood"></div>
+              <label class="ac-field ac-cz__moodtxt"><span>OR TYPE YOUR OWN</span><input id="moodText" type="text" maxlength="28" placeholder="currently: …" /></label>
+            </section>
+            <p class="ac-cz__saved" id="czSaved" aria-live="polite">changes save by themselves ♡</p>
+          </div>
+        </div>
+
+        <div class="ac-panel" data-panel="settings" role="tabpanel" hidden>
+          <form class="ac-settings" id="settings" novalidate>
+            <div class="ac-settings__row">
+              <label class="ac-field"><span>NICKNAME</span><input id="stName" type="text" maxlength="18" autocomplete="nickname" /></label>
+              <label class="ac-field"><span>EMAIL</span><input id="stEmail" type="email" autocomplete="email" /></label>
+            </div>
+            <fieldset>
+              <legend>MY SIZE — CLOTHES</legend>
+              <div class="ac-pills" id="sizeTop"></div>
+            </fieldset>
+            <fieldset>
+              <legend>MY SIZE — SHOES</legend>
+              <div class="ac-pills" id="sizeShoe"></div>
+            </fieldset>
+            <fieldset>
+              <legend>I'M OBSESSED WITH</legend>
+              <div class="ac-pills" id="favCats"></div>
+            </fieldset>
+            <label class="ac-check">
+              <input id="stNews" type="checkbox" />
+              <i aria-hidden="true"></i>
+              <span>send me drops early + 10% off ♡</span>
+            </label>
+            <div class="ac-settings__actions">
+              <button type="submit" class="winbtn">SAVE CHANGES ♡</button>
+              <button type="button" class="ac-danger" id="deleteAcc">delete my doll id</button>
+            </div>
+            <p class="ac-note">everything is saved only in this browser.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+    <div class="ac-crop" id="crop" role="dialog" aria-modal="true" aria-labelledby="cropTitle" hidden>
+      <div class="win win--static ac-crop__win">
+        <div class="win__bar"><span id="cropTitle">crop_photo.exe</span><div class="win__btns"><i>×</i></div></div>
+        <div class="win__body ac-crop__body">
+          <div class="ac-crop__stage" id="cropStage">
+            <canvas id="cropCanvas" width="560" height="560" aria-label="Drag to move your photo"></canvas>
+            <span class="ac-crop__hint">drag to move ✦</span>
+          </div>
+          <div class="ac-crop__ctrl">
+            <label class="ac-crop__zoom"><span>ZOOM</span><input type="range" id="cropZoom" min="1" max="3" step="0.01" value="1" /></label>
+            <p class="ac-cz__label">FILTER</p>
+            <div class="ac-opts ac-opts--sm" id="filters" role="radiogroup" aria-label="Photo filter"></div>
+            <div class="ac-crop__actions">
+              <button type="button" class="winbtn" id="cropCancel">CANCEL</button>
+              <button type="button" class="winbtn ac-crop__save" id="cropSave">SAVE ♡</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="footer">
+    <div class="footer__top">
+      <div class="footer__col">
+        <h4>SHOP</h4>
+        <a href="new-in.html">New in</a><a href="shop.html">All products</a><a href="drops.html">Drops</a><a href="shop.html?cat=accessories">Accessories</a><a href="gift-cards.html">Gift cards</a>
+      </div>
+      <div class="footer__col">
+        <h4>HELP</h4>
+        <a href="shipping.html">Shipping</a><a href="returns.html">Returns</a><a href="size-guide.html">Size guide</a><a href="faq.html">FAQ</a><a href="contact.html">Contact</a>
+      </div>
+      <div class="footer__col">
+        <h4>DOLL WORLD</h4>
+        <a href="about.html">About</a><a href="lookbook.html">Lookbook</a><a href="journal.html">Journal</a><a href="stockists.html">Stockists</a>
+      </div>
+      <div class="footer__col">
+        <h4>SOCIAL</h4>
+        <a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a><a href="https://tiktok.com" target="_blank" rel="noopener">TikTok</a><a href="https://pinterest.com" target="_blank" rel="noopener">Pinterest</a>
+      </div>
+      <div class="footer__col footer__col--time">
+        <h4>TIME IN DOLLTOWN</h4>
+        <p class="footer__clock" data-clock-sec>00:00:00</p>
+        <a href="#top" class="link-arrow link-arrow--light" data-scramble>BACK TO TOP ↑</a>
+      </div>
+    </div>
+
+    <div class="footer__logo">
+      <canvas id="footLogo" class="dotlogo" aria-hidden="true"></canvas>
+    </div>
+
+    <div class="footer__bottom">
+      <span>© 2026 CYBERDOLL</span>
+      <span class="barcode" aria-hidden="true"></span>
+      <span><a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="cookies.html">Cookies</a></span>
+    </div>
+  </footer>
+
+  <script src="js/products.js?v=32"></script>
+  <script src="js/main.js?v=34"></script>
+  <script src="js/cards.js?v=32"></script>
+  <script src="js/account.js?v=34"></script>
+  <script src="js/secrets.js?v=34"></script>
+</body>
+</html>

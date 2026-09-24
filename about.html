@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ABOUT — CYBERDOLL'S SPACE</title>
+  <meta name="description" content="About CYBERDOLL — clothes for girls who live half online and half in the club. Small runs, never restocked." />
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="img/favicon-32.png" sizes="32x32" type="image/png" />
+  <link rel="apple-touch-icon" href="img/apple-touch-icon.png" />
+  <meta name="theme-color" content="#0a0a0b" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Pinyon+Script&family=Playfair+Display:ital,wght@1,900&family=Silkscreen&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css?v=34" />
+  <link rel="stylesheet" href="css/shop.css?v=32" />
+  <link rel="stylesheet" href="css/about.css?v=32" />
+</head>
+<body class="page-about">
+
+  <!-- global fx -->
+  <div class="grain" aria-hidden="true"></div>
+  <canvas class="trail" id="trail" aria-hidden="true"></canvas>
+  <div class="cursor" id="cursor" aria-hidden="true">
+    <svg class="cursor__heart" viewBox="0 0 7 6" shape-rendering="crispEdges"><path d="M1 0h2v1h1V0h2v1h1v2H6v1H5v1H4v1H3V5H2V4H1V3H0V1h1z"/></svg>
+    <span class="cursor__label" id="cursorLabel"></span>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <!-- ================= HEADER ================= -->
+  <header class="header" id="header">
+    <div class="ticker" aria-label="Announcements">
+      <div class="marquee" data-speed="0.6">
+        <div class="marquee__track">
+          <span>✦ FREE SHIPPING OVER €90</span><span>✦ DROP #005 MIDNIGHT MALL — OUT NOW</span><span>✦ WORLDWIDE DELIVERY</span><span>✦ NEW DOLLS GET 10% OFF — JOIN THE CLUB</span><span>✦ LIMITED PIECES, NO RESTOCKS</span>
+        </div>
+      </div>
+    </div>
+
+    <nav class="nav" aria-label="Main">
+      <button class="nav__burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="menu">
+        <span></span><span></span>
+      </button>
+
+      <ul class="nav__links nav__links--left">
+        <li><a href="new-in.html" data-scramble>NEW IN</a></li>
+        <li><a href="shop.html" data-scramble>SHOP</a></li>
+        <li><a href="drops.html" data-scramble>DROPS</a></li>
+        <li><a href="lookbook.html" data-scramble>LOOKBOOK</a></li>
+      </ul>
+
+      <a href="index.html" class="nav__logo" aria-label="CYBERDOLL home">
+        <canvas id="navLogo" class="navlogo"></canvas>
+      </a>
+
+      <ul class="nav__links nav__links--right">
+        <li class="hide-sm"><a href="about.html" data-scramble aria-current="page">ABOUT</a></li>
+        <li class="hide-sm"><a href="search.html" data-scramble>SEARCH</a></li>
+        <li class="hide-sm"><a href="account.html" data-scramble>ACCOUNT</a></li>
+        <li><a href="wishlist.html" class="nav__wish" aria-label="Wishlist">
+          <svg viewBox="0 0 7 6" shape-rendering="crispEdges"><path d="M1 0h2v1h1V0h2v1h1v2H6v1H5v1H4v1H3V5H2V4H1V3H0V1h1z"/></svg>
+          <span id="wishCount">0</span>
+        </a></li>
+        <li><a href="cart.html" class="nav__bag">BAG [<span id="bagCount">0</span>]</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- mobile / overlay menu -->
+  <div class="menu" id="menu" aria-hidden="true">
+    <ul class="menu__list">
+      <li><a href="new-in.html"><small>01</small>NEW IN</a></li>
+      <li><a href="shop.html"><small>02</small>SHOP</a></li>
+      <li><a href="drops.html"><small>03</small>DROPS</a></li>
+      <li><a href="lookbook.html"><small>04</small>LOOKBOOK</a></li>
+      <li><a href="about.html" aria-current="page"><small>05</small>ABOUT</a></li>
+      <li><a href="contact.html"><small>06</small>CONTACT</a></li>
+    </ul>
+    <div class="menu__foot">
+      <a href="account.html">ACCOUNT</a><a href="search.html">SEARCH</a><a href="wishlist.html">WISHLIST ♡</a>
+    </div>
+  </div>
+
+    <main id="main" class="ab">
+    <div class="ab-bg" aria-hidden="true"></div>
+
+    <div class="ab-wrap">
+      <!-- fake browser bar -->
+      <div class="ab-browser" aria-hidden="true">
+        <span class="ab-browser__dots"><i></i><i></i><i></i></span>
+        <span class="ab-browser__url">http://www.cyberdoll.net/<b>dolls</b></span>
+        <span class="ab-browser__go">GO ▸</span>
+      </div>
+
+      <h1 class="ab-title">
+        <span class="ab-title__small">welcome to</span>
+        <span class="ab-title__big" data-glitch="CYBERDOLL'S SPACE">CYBERDOLL'S SPACE</span>
+      </h1>
+      <div class="ab-ticker" aria-hidden="true">
+        <div class="marquee" data-speed="0.7">
+          <div class="marquee__track">
+            <span>♡ thanks for the add ♡</span><span>✦ est. 2026 ✦</span><span>☆ small runs, no restocks ☆</span><span>♡ pc4pc ♡</span><span>✦ glitch in public ✦</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="ab-cols">
+        <!-- ================= LEFT ================= -->
+        <aside class="ab-left">
+
+          <section class="ab-box ab-profile" data-reveal>
+            <h2 class="ab-profile__name">CYBERDOLL</h2>
+            <div class="ab-profile__row">
+              <div class="media ab-profile__pic" data-ph="PROFILE · 1:1"><img src="img/about/profile.jpg" style="object-position:47% 35%" alt="CYBERDOLL profile picture" /></div>
+              <ul class="ab-profile__meta">
+                <li>"pretty is a weapon"</li>
+                <li>Female dolls</li>
+                <li>The Internet<br />Planet Earth</li>
+                <li class="ab-online"><i></i>Online Now!</li>
+                <li>Last Login:<br /><span id="lastLogin">just now</span></li>
+              </ul>
+            </div>
+            <p class="ab-profile__mood">Mood: <b>glitchy</b> <span class="ab-smiley" aria-hidden="true">✧(◕‿◕)✧</span></p>
+            <p class="ab-profile__views">Profile Views: <b id="views">000000</b></p>
+          </section>
+
+          <section class="ab-box">
+            <h2 class="ab-box__bar">Contacting CYBERDOLL</h2>
+            <div class="ab-contact">
+              <button type="button" class="ab-btn" data-act="friend" id="friendBtn">♡ Add to Friends</button>
+              <a href="contact.html" class="ab-btn">✉ Send Message</a>
+              <button type="button" class="ab-btn" data-act="fave">★ Add to Favorites</button>
+              <button type="button" class="ab-btn" data-act="share">↗ Forward to Friend</button>
+              <button type="button" class="ab-btn" data-act="block">☠ Block User</button>
+              <a href="index.html#club" class="ab-btn">✦ Join the Club</a>
+            </div>
+          </section>
+
+          <section class="ab-box" data-reveal>
+            <h2 class="ab-box__bar">CYBERDOLL's Details</h2>
+            <table class="ab-table">
+              <tr><th>Status:</th><td>single &amp; glitching</td></tr>
+              <tr><th>Here for:</th><td>the afterparty</td></tr>
+              <tr><th>Hometown:</th><td>the internet</td></tr>
+              <tr><th>Made of:</th><td>lace, leather &amp; rhinestones</td></tr>
+              <tr><th>Star sign:</th><td>scorpio rising, obviously</td></tr>
+              <tr><th>Est.:</th><td>2026</td></tr>
+              <tr><th>Drops:</th><td id="statDrops">—</td></tr>
+              <tr><th>Pieces:</th><td id="statPieces">—</td></tr>
+            </table>
+          </section>
+
+          <section class="ab-box" data-reveal>
+            <h2 class="ab-box__bar">CYBERDOLL's Interests</h2>
+            <table class="ab-table ab-table--interests">
+              <tr><th>General</th><td>corsets, low-rise, fur trim, rhinestones, studs, flash photography, leg warmers</td></tr>
+              <tr><th>Music</th><td>y2k club, emo, nightcore, anything on a burnt CD</td></tr>
+              <tr><th>Movies</th><td>anything with a makeover montage</td></tr>
+              <tr><th>Television</th><td>fashion shows at 2am</td></tr>
+              <tr><th>Books</th><td>scans of old street-snap magazines</td></tr>
+              <tr><th>Heroes</th><td>every girl who did her eyeliner on the night bus</td></tr>
+            </table>
+          </section>
+
+          <section class="ab-box" data-reveal>
+            <h2 class="ab-box__bar">now_playing.mp3</h2>
+            <div class="ab-box__body">
+              <div class="player">
+                <div class="player__eq" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+                <div class="player__title"><div class="marquee" data-speed="0.5"><div class="marquee__track"><span class="player__song">♫ cyberdoll radio — press play ♡</span></div></div></div>
+              </div>
+              <div class="player__ctrl"><button type="button" class="player__btn" id="plPrev" aria-label="Previous track">◀◀</button><button type="button" class="player__btn player__btn--play" id="plPlay" aria-label="Play">▶</button><button type="button" class="player__btn" id="plNext" aria-label="Next track">▶▶</button><span class="player__time" id="plTime">00:00</span></div>
+            </div>
+          </section>
+        </aside>
+
+        <!-- ================= RIGHT ================= -->
+        <div class="ab-right">
+
+          <section class="ab-box ab-network" data-reveal>
+            <p><b>CYBERDOLL is in your extended network</b></p>
+            <span class="ab-network__stars" aria-hidden="true">✦ ✧ ✦ ✧ ✦</span>
+          </section>
+
+          <section class="ab-box" data-reveal>
+            <h2 class="ab-box__bar">CYBERDOLL's Blurbs</h2>
+            <div class="ab-box__body ab-blurbs">
+              <h3>About me:</h3>
+              <p class="ab-typed">CYBERDOLL started on a bedroom floor with a second-hand sewing machine, a pile of thrifted lace and way too many open tabs of Harajuku street snaps and 2004 mall-goth blogs.</p>
+              <p>We make clothes for girls who live half online and half in the club: corsets that look like error messages, low-rise everything, fur on things that don't need fur. Every drop is a small run. When it's gone, it's gone — we don't restock, we move on to the next obsession.</p>
+              <p>We think getting dressed is the most fun you can have before midnight, that <mark>pretty is a weapon</mark>, and that nobody should ever have to choose between cute and dangerous.</p>
+              <div class="ab-blurbs__pics">
+                <div class="media" data-ph="STUDIO · 4:3"><img src="img/about/studio.jpg" style="object-position:50% 50%" alt="The CYBERDOLL studio" /></div>
+                <div class="media" data-ph="SKETCHES · 4:3"><img src="img/about/sketches.jpg" style="object-position:40% 35%" alt="Sketches and moodboard" /></div>
+              </div>
+              <h3>Who I'd like to meet:</h3>
+              <p>You, doing your eyeliner on the night bus. You, in the club bathroom fixing a stranger's hair. You, who owns more belts than jeans. Girls who glitch in public. Anyone who ever made a layout at 3am and felt something.</p>
+            </div>
+          </section>
+
+          <section class="ab-box" data-reveal>
+            <h2 class="ab-box__bar">CYBERDOLL's Latest Blog Entries <a href="drops.html">[view all drops]</a></h2>
+            <ol class="ab-blog" id="blog">
+              <li class="ab-post">
+                <p class="ab-post__date">03.11.2025 · mood: nervous (╥﹏╥)</p>
+                <h3>hello world</h3>
+                <div class="ab-post__row">
+                  <div class="media ab-post__pic" data-ph="BLOG 01 · 1:1"><img src="img/about/blog-01.jpg" style="object-position:60% 50%" alt="" /></div>
+                  <p>Bought a second-hand sewing machine, named it Sparkle, broke two needles on the very first corset. Posted it anyway. Three people asked where to buy it. So… this is happening.</p>
+                </div>
+              </li>
+              <li class="ab-post">
+                <p class="ab-post__date">14.02.2026 · mood: hazardous ☠</p>
+                <h3>DROP #003 is out</h3>
+                <div class="ab-post__row">
+                  <div class="media ab-post__pic" data-ph="BLOG 02 · 1:1"><img src="img/about/blog-02.jpg" style="object-position:45% 35%" alt="" /></div>
+                  <p>Five pieces, one look, a valentine you can't return. It was gone before we finished refreshing the page. We cried a little. Good tears. <a href="drops.html#drop-003">see the drop →</a></p>
+                </div>
+              </li>
+              <li class="ab-post">
+                <p class="ab-post__date">05.06.2026 · mood: crashed ⚠</p>
+                <h3>the server is down (our fault)</h3>
+                <div class="ab-post__row">
+                  <div class="media ab-post__pic" data-ph="BLOG 03 · 1:1"><img src="img/about/blog-03.jpg" style="object-position:50% 40%" alt="" /></div>
+                  <p>ANGEL.EXE went live and the website fell over. Twice. Sorry. Also: thank you?? <a href="drops.html#drop-004">see the drop →</a></p>
+                </div>
+              </li>
+              <li class="ab-post">
+                <p class="ab-post__date">23.09.2026 · mood: glittery ✧</p>
+                <h3>welcome to the MIDNIGHT MALL</h3>
+                <div class="ab-post__row">
+                  <div class="media ab-post__pic" data-ph="BLOG 04 · 1:1"><img src="img/about/blog-04.jpg" style="object-position:40% 40%" alt="" /></div>
+                  <p>Our biggest drop yet: tops, corsets and low-rise everything in five moods. The 2004 mall at closing time, forever. <a href="new-in.html">read the story →</a></p>
+                </div>
+              </li>
+              <li class="ab-post ab-post--locked" id="privatePost">
+                <p class="ab-post__date">13.11.2026 · mood: <span data-glitchtext data-unlock-to="secretive (¬‿¬)">??????</span></p>
+                <h3 data-glitchtext data-unlock-to="psst… you're in ♡">[ this entry is private ]</h3>
+                <p class="ab-post__lock">You need to be a friend to read this post. <button type="button" class="ab-link" data-act="friend">add CYBERDOLL?</button></p>
+                <div class="ab-post__secret" id="privateSecret" hidden>
+                  <div class="ab-post__row">
+                    <a href="drops.html#drop-006" class="ab-peek" aria-label="Sneak peek of drop #006">
+                      <img src="img/outwear/outwear-06.jpg" alt="" loading="lazy" style="object-position:45% 60%" />
+                      <span>SNEAK PEEK</span>
+                    </a>
+                    <div>
+                      <p>Since you're a friend now: <b>DROP #006</b> unlocks on <b>Friday the 13th of November at 18:00</b>. It's darker, it's furrier and it has more buckles than we're legally allowed to use.</p>
+                      <p>Friends get the secret link one hour early. Don't tell anyone ♡</p>
+                      <p class="ab-post__countdown">unlocks in <b id="privateCount">--</b></p>
+                      <p><a href="drops.html#drop-006">get on the list →</a></p>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </ol>
+          </section>
+
+          <section class="ab-box" data-reveal>
+            <h2 class="ab-box__bar">CYBERDOLL's Friend Space</h2>
+            <div class="ab-box__body">
+              <p class="ab-top8__count">CYBERDOLL has <b>666</b> friends.</p>
+              <ul class="ab-top8" id="top8">
+                <li><figure><div class="media" data-ph="FRIEND 1"><img src="img/about/founder.jpg" style="object-position:68% 58%" alt="" /></div><figcaption>the founder ♡</figcaption></figure></li>
+                <li><figure><div class="media" data-ph="FRIEND 2"><img src="img/about/sparkle.jpg" style="object-position:50% 38%" alt="" /></div><figcaption>sparkle (the sewing machine)</figcaption></figure></li>
+                <li><figure><div class="media" data-ph="ARCHIVE"><img src="img/about/friend-3.jpg" style="object-position:50% 45%" alt="" /></div><figcaption>the archive closet</figcaption></figure></li>
+                <li><figure><div class="media" data-ph="FRIEND 4"><img src="img/about/fit-model.jpg" style="object-position:50% 40%" alt="" /></div><figcaption>our fit model</figcaption></figure></li>
+                <li><figure><div class="media" data-ph="FRIEND 5"><img src="img/about/photographer.jpg" style="object-position:45% 35%" alt="" /></div><figcaption>the photographer</figcaption></figure></li>
+                <li><figure><div class="media" data-ph="FRIEND 6"><img src="img/about/moodboard.jpg" style="object-position:50% 50%" alt="" /></div><figcaption>moodboard wall</figcaption></figure></li>
+                <li><figure><div class="media" data-ph="FRIEND 7"><img src="img/about/packing.jpg" style="object-position:66% 50%" alt="" /></div><figcaption>packing night</figcaption></figure></li>
+                <li><figure><div class="media" data-ph="FRIEND 8"><img src="img/about/studio-cat.jpg" style="object-position:55% 62%" alt="" /></div><figcaption>studio cat</figcaption></figure></li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="ab-box" data-reveal>
+            <h2 class="ab-box__bar">CYBERDOLL's Friends Comments <span>Displaying <b id="commentCount">0</b> comments</span></h2>
+            <ol class="ab-comments" id="comments"></ol>
+            <form class="ab-form" id="commentForm" novalidate>
+              <p class="ab-form__title">Add Comment</p>
+              <label for="cName" class="sr-only">Your name</label>
+              <input id="cName" type="text" maxlength="24" placeholder="ur name" autocomplete="nickname" required />
+              <label for="cText" class="sr-only">Comment</label>
+              <textarea id="cText" maxlength="240" rows="3" placeholder="leave a comment ♡ (only you will see it — it stays in your browser)" required></textarea>
+              <button type="submit" class="winbtn">POST COMMENT ♡</button>
+              <p class="ab-form__msg" id="commentMsg" role="status"></p>
+            </form>
+          </section>
+        </div>
+      </div>
+    </div>
+
+    <canvas class="ab-burst" id="burst" aria-hidden="true"></canvas>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="footer">
+    <div class="footer__top">
+      <div class="footer__col">
+        <h4>SHOP</h4>
+        <a href="new-in.html">New in</a><a href="shop.html">All products</a><a href="drops.html">Drops</a><a href="shop.html?cat=accessories">Accessories</a><a href="gift-cards.html">Gift cards</a>
+      </div>
+      <div class="footer__col">
+        <h4>HELP</h4>
+        <a href="shipping.html">Shipping</a><a href="returns.html">Returns</a><a href="size-guide.html">Size guide</a><a href="faq.html">FAQ</a><a href="contact.html">Contact</a>
+      </div>
+      <div class="footer__col">
+        <h4>DOLL WORLD</h4>
+        <a href="about.html">About</a><a href="lookbook.html">Lookbook</a><a href="journal.html">Journal</a><a href="stockists.html">Stockists</a>
+      </div>
+      <div class="footer__col">
+        <h4>SOCIAL</h4>
+        <a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a><a href="https://tiktok.com" target="_blank" rel="noopener">TikTok</a><a href="https://pinterest.com" target="_blank" rel="noopener">Pinterest</a>
+      </div>
+      <div class="footer__col footer__col--time">
+        <h4>TIME IN DOLLTOWN</h4>
+        <p class="footer__clock" data-clock-sec>00:00:00</p>
+        <a href="#top" class="link-arrow link-arrow--light" data-scramble>BACK TO TOP ↑</a>
+      </div>
+    </div>
+
+    <div class="footer__logo">
+      <canvas id="footLogo" class="dotlogo" aria-hidden="true"></canvas>
+    </div>
+
+    <div class="footer__bottom">
+      <span>© 2026 CYBERDOLL</span>
+      <span class="barcode" aria-hidden="true"></span>
+      <span><a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="cookies.html">Cookies</a></span>
+    </div>
+  </footer>
+
+  <script src="js/products.js?v=32"></script>
+  <script src="js/main.js?v=34"></script>
+  <script src="js/about.js?v=32"></script>
+  <script src="js/secrets.js?v=34"></script>
+</body>
+</html>
